@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     trim: true
   },
@@ -15,7 +15,19 @@ const schema = new mongoose.Schema({
   },
   passwordHash: {
     type: String
-  }
+  },
+  hasEvent: {
+    type: Boolean
+  },
+  rating: {
+    avgRate: { type: Number },
+    numRates: { type: Number }
+  },
+  invitationToken: [
+    {
+      type: String
+    }
+  ]
 });
 
 module.exports = mongoose.model('User', schema);

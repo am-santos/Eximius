@@ -1,0 +1,17 @@
+$buttonColor:#A74EE1;
+$backgroundColor: #121212;
+$fontColor: #fff;
+
+
+
+.App {
+  background-color: $backgroundColor;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  button {
+    background-color: $buttonColor;
+    border-radius: 3em;
+    padding: 0.5em;
+  }
+}

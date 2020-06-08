@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './index.scss';
+
 import { logIn } from './../../../services/authentication';
 
 class LoginView extends Component {
@@ -36,7 +38,7 @@ class LoginView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="logIn">
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='username-input'></label>
           <input

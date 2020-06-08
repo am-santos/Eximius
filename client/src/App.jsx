@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 
 /* Events */
 import HomeView from './views/HomeView';

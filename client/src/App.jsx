@@ -4,18 +4,22 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
+/* Events */
 import HomeView from './views/HomeView';
 import EventSingleView from './views/EventSingleView';
 import MyEventListView from './views/MyEventListView';
 import CreateEventView from './views/CreateEventView';
 import EventEditView from './views/EventEditView';
 
+/* Authentication */
 import LogInView from './views/LogInView';
 import SignUpView from './views/SignUpView';
 
+/* Profile */
 import ProfileView from './views/ProfileView';
 import EditProfileView from './views/EditProfileView';
 
+/* Contact Us */
 import ContactUsView from './views/ContactUsView';
 
 function App() {

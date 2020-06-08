@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 const ProfileView = (props) => {
   const user = props.user;
-  console.log('PROFILE VIEW PROPS ->', props);
-  console.log('PROFILE VIEW USER ->', user);
   return (
     <div>
       {user && (

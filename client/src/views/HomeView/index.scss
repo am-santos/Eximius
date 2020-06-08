@@ -1,5 +1,6 @@
 .home {
   height: 100vh;  
+  /*background: url("/images/homePage.jpg") center/100vh;*/
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/homePage.jpg") center/100vh;
   display: flex;
   flex-direction: column;
@@ -27,7 +28,7 @@
   align-items: center;
   justify-content: center;
   a {
-    font-size: 2em;
+    font-size: 1.5em;
     text-decoration: none;
     color: #fff;
   }

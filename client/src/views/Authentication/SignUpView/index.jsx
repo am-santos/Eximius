@@ -70,7 +70,7 @@ class SignUpView extends Component {
             onChange={this.handleInputChange}
           />
 
-          <button>Submit User</button>
+          <button>Sign Up</button>
         </form>
       </div>
     );

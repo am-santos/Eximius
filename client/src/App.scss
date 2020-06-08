@@ -11,7 +11,8 @@ $fontColor: #fff;
   color: white;
   button {
     background-color: $buttonColor;
-    border-radius: 3em;
+    border-radius: 15px;
     padding: 0.5em;
+    font-weight: bold;
   }
 }

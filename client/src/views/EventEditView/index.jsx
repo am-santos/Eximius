@@ -1,11 +1,12 @@
-import React from 'react';
-//import './style.scss';
+import React, { Component } from 'react'
+import './style.scss';
 
-const EditEventView = () => {
-  return (
-    <div className="container">
-      <h1>Edit Event</h1>
-      <form>
+class EditEventView extends Component {
+  render() {
+    return (
+      <div className="form">
+        <h1>Edit Event</h1>
+        <form>
           <label htmlFor='name'></label>
           <input
             id='name-input'
@@ -51,10 +52,10 @@ const EditEventView = () => {
             //value={this.state.password}
             //onChange={this.handleInputChange}
           />
-          <button>Edit Event</button>
+          <button>Create Event</button>
         </form>
     </div>
-  )
+  )}
 }
 
 export default EditEventView;

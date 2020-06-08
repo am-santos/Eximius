@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react'
 import './style.scss';
 
-const CreateEventView = () => {
-  return (
-    <div className="container">
-      <h1>Create Event</h1>
-      <form>
+class CreateEventView extends Component {
+  render() {
+    return (
+      <div className="form">
+        <h1>Create Event</h1>
+        <form>
           <label htmlFor='name'></label>
           <input
             id='name-input'
@@ -54,7 +55,10 @@ const CreateEventView = () => {
           <button>Create Event</button>
         </form>
     </div>
-  )
+  )}
 }
 
 export default CreateEventView;
+
+
+

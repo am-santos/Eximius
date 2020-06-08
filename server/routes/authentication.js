@@ -54,6 +54,52 @@ const router = new Router();
     });
 }); */
 
+router.post('/sign-up/eximius-staff-laa', (req, res, next) => {
+  const { username, email, password } = req.body;
+
+  let hashedPassword;
+  let invitationToken1;
+  let invitationToken2;
+  let invitationToken3;
+
+  bcryptjs
+    .hash(password, 10)
+    .then((hash) => {
+      hashedPassword = hash;
+      return bcryptjs.hash(hashedPassword.slice(0, 1), 10);
+    })
+    .then((hash) => {
+      invitationToken1 = String(hash)
+        .split('/')
+        .join();
+      return bcryptjs.hash(hashedPassword.slice(0, 2), 10);
+    })
+    .then((hash) => {
+      invitationToken2 = String(hash)
+        .split('/')
+        .join();
+      return bcryptjs.hash(hashedPassword.slice(0, 3), 10);
+    })
+    .then((hash) => {
+      invitationToken3 = String(hash)
+        .split('/')
+        .join();
+      return User.create({
+        username,
+        email,
+        passwordHash: hashedPassword,
+        invitationToken: [invitationToken1, invitationToken2, invitationToken3]
+      });
+    })
+    .then((user) => {
+      req.session.user = user._id;
+      res.json({ user });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 router.post('/sign-up/:token', (req, res, next) => {
   const { username, email, password } = req.body;
   const token = req.params.token;
@@ -113,8 +159,8 @@ router.post('/sign-up/:token', (req, res, next) => {
 
 router.post('/sign-in', (req, res, next) => {
   let user;
-  const { email, password } = req.body;
-  User.findOne({ email })
+  const { username, password } = req.body;
+  User.findOne({ username })
     .then((document) => {
       if (!document) {
         return Promise.reject(new Error("There's no user with that email."));

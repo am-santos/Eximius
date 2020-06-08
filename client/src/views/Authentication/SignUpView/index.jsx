@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import signUp from './../../../services/authentication';
+import { signUp } from './../../../services/authentication';
 
 class SignUpView extends Component {
   constructor(props) {

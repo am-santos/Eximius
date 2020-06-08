@@ -21,6 +21,27 @@ const signUp = (body) => {
     .catch((error) => Promise.reject(error));
 };
 
-//const signIn = () => {};
+const logIn = (body) => {
+  return baseAuthenticationService
+    .post('/sign-in', body)
+    .then((response) => {
+      const user = response.data.user;
+      return Promise.resolve(user);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
 
-export default signUp;
+/* const signOut = () => {
+  return baseAuthenticationService
+    .post('/sign-out')
+    .then(response => {
+      return Promise.resolve();
+    })
+    .catch(error => {
+      return Promise.reject(error);
+    });
+}; */
+
+export { signUp, logIn };

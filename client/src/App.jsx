@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import './App.css';
 
@@ -12,7 +12,7 @@ import HomeView from './views/HomeView';
 //import EventEditView from './views/EventEditView';
 
 /* Authentication */
-//import LogInView from './views/Authentication/LogInView';
+import LogInView from './views/Authentication/LogInView';
 import SignUpView from './views/Authentication/SignUpView';
 
 /* Profile */
@@ -41,14 +41,24 @@ class App extends Component {
       <div className='App'>
         <BrowserRouter>
           {/* LogoBar or NavBar */}
-
+          <Link to='/authentication/log-in/'>Log-In</Link>
+          <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
           <Switch>
             {/* Authentication /> */}
-            {/* <Route path='/authentication/log-in' component={LogInView} /> */}
+            <Route
+              path='/authentication/log-in'
+              render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
+            />
             {/* <Route path='/authentication/sign-up' exact component={SignUpView} /> */}
 
             <Route
               path='/authentication/sign-up/:token'
+              render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
+            />
+
+            <Route
+              exact
+              path='/authentication/sign-up/eximius-staff-laa'
               render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
             />
 

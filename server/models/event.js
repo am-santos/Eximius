@@ -15,6 +15,9 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  limit: {
+    type: Number
+  },
   theme: {
     type: String
   },

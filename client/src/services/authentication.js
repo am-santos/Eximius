@@ -12,7 +12,7 @@ const signUp = (body) => {
   // console.log('services authentication life')
   // use form instead of body when dealling with images
   return baseAuthenticationService
-    .post('/sign-up', body)
+    .post(`/sign-up/${body.token}`, body)
     .then((response) => {
       console.log(response);
       const user = response.data.user;

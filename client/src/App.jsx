@@ -30,7 +30,7 @@ class App extends Component {
     };
   }
 
-  updateUser = user => {
+  updateUser = (user) => {
     this.setState({
       user
     });
@@ -46,22 +46,18 @@ class App extends Component {
             {/* Authentication /> */}
             {/* <Route path='/authentication/log-in' component={LogInView} /> */}
             {/* <Route path='/authentication/sign-up' exact component={SignUpView} /> */}
-            
+
             <Route
-                path="/authentication/sign-up"
-                render={props => (
-                  <SignUpView {...props} updateUser={this.updateUser} />
-                )}
-              />
-            
+              path='/authentication/sign-up/:token'
+              render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
+            />
+
             {/* Events /> */}
             <Route path='/' component={HomeView} />
             {/* <Route path='/event/:id' component={EventSingleView} />
             <Route path='/my-events' component={MyEventListView} />
             <Route path='/event/create' component={CreateEventView} />
             <Route path='/event/:id/edit' component={EventEditView} /> */}
-
-            
 
             {/* Profile /> */}
             {/* <Route path='/profile' component={ProfileView} />

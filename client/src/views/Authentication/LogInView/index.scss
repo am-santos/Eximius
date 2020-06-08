@@ -1,5 +1,36 @@
 .logIn {
   height: 100vh;
   display: flex;
-  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: 40vh;
+    background-color: rgba($color: #fff, $alpha: 0.1 );
+    padding: 4em 0;
+    border-radius: 15px;
+  }
+  input {
+    width: 60vw;
+    background-color: #121212;
+    border-radius: 30px;
+    color: white;
+    padding: 1.5em 1em;
+    margin: 1em;
+    border: 1px solid #121212;
+  }
+  button {
+    margin-top: 1em;
+    color: white;
+    padding: 1em;
+    font-size: 1.2em;
+    border: 1px solid #121212
+  }
+
+  ::placeholder {
+    color:white;
+    font-size: 1.3em;
+    text-align: center;
+    text-transform: lowercase;
+  }
 }

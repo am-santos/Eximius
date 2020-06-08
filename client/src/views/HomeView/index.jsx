@@ -6,10 +6,15 @@ import './index.scss';
 class HomeView extends Component {
   render() {
     return (
-      <div className="home">
-        <h1>Eximius</h1>
+      <div>
+        <section className="home">
+          <h1>Eximius</h1>
 
-        <Link to='/authentication/log-in'>Log In</Link>
+          <Link to='/authentication/log-in'>Log In</Link>
+        </section>
+        <section className="contactUs">
+          <Link to='/contact-us'>Contact Us</Link>
+        </section>
       </div>
     );
   }

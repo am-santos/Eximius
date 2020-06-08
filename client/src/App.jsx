@@ -8,8 +8,8 @@ import './App.scss';
 import HomeView from './views/HomeView';
 //import EventSingleView from './views/EventSingleView';
 //import MyEventListView from './views/MyEventListView';
-//import CreateEventView from './views/CreateEventView';
-//import EventEditView from './views/EventEditView';
+import CreateEventView from './views/CreateEventView';
+import EventEditView from './views/EventEditView';
 
 /* Authentication */
 import LogInView from './views/Authentication/LogInView';
@@ -65,11 +65,10 @@ class App extends Component {
             />
 
             {/* Events /> */}
-            <Route path='/' exact component={HomeView} />
             {/* <Route path='/event/:id' component={EventSingleView} />
-            <Route path='/my-events' component={MyEventListView} />
-            <Route path='/event/create' component={CreateEventView} />
-            <Route path='/event/:id/edit' component={EventEditView} /> */}
+            <Route path='/my-events' component={MyEventListView} /> */}
+            <Route path='/event/:id/edit' component={EventEditView} />
+            <Route exact path='/event/create' component={CreateEventView} />
 
             {/* Profile /> */}
             <Route
@@ -82,6 +81,7 @@ class App extends Component {
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />
             <Route path='/contact-us/edit' component={EditProfileView} /> */}
+            <Route path='/' component={HomeView} />
           </Switch>
         </BrowserRouter>
       </div>

@@ -43,9 +43,13 @@ app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
 app.use('/', indexRouter);
-app.use('/authentication', authenticationRouter);
+app.use('/api/authentication', authenticationRouter);
 
-app.use('/profile', userRouter);
+app.use('/api/profile', userRouter);
+
+app.get('*', (req, res, next) => {
+  res.sendFile(join(__dirname, '../client/public/index.html'));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

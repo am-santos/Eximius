@@ -16,8 +16,12 @@ const schema = new mongoose.Schema({
   passwordHash: {
     type: String
   },
+  photo: {
+    type: String
+  },
   hasEvent: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   rating: {
     avgRate: { type: Number },

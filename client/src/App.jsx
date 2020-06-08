@@ -16,7 +16,7 @@ import LogInView from './views/Authentication/LogInView';
 import SignUpView from './views/Authentication/SignUpView';
 
 /* Profile */
-//import ProfileView from './views/ProfileView';
+import ProfileView from './views/ProfileView';
 //import EditProfileView from './views/EditProfileView';
 
 /* Contact Us */
@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   updateUser = (user) => {
+    console.log('INSIDE UPDATE USER ->', user);
     this.setState({
       user
     });
@@ -43,6 +44,7 @@ class App extends Component {
           {/* LogoBar or NavBar */}
           <Link to='/authentication/log-in/'>Log-In</Link>
           <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
+
           <Switch>
             {/* Authentication /> */}
             <Route
@@ -63,15 +65,19 @@ class App extends Component {
             />
 
             {/* Events /> */}
-            <Route path='/' component={HomeView} />
+            <Route path='/' exact component={HomeView} />
             {/* <Route path='/event/:id' component={EventSingleView} />
             <Route path='/my-events' component={MyEventListView} />
             <Route path='/event/create' component={CreateEventView} />
             <Route path='/event/:id/edit' component={EventEditView} /> */}
 
             {/* Profile /> */}
-            {/* <Route path='/profile' component={ProfileView} />
-            <Route path='/profile/edit' component={EditProfileView} /> */}
+            <Route
+              path='/profile'
+              updateUser={this.updateUser}
+              render={(props) => <ProfileView {...props} user={this.state.user} />}
+            />
+            {/*<Route path='/profile/edit' component={EditProfileView} /> */}
 
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />

@@ -1,0 +1,26 @@
+.container {
+}
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 284px;
+    height: 502px;
+    left: 51px;
+    top: 115px;
+    padding-top: 6em;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    
+    input, 
+    button,
+    label {
+      margin-bottom: 1em;
+      border-radius: 20%
+
+    }
+
+}

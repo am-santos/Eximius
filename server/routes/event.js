@@ -1,17 +1,18 @@
 'user strict';
 
 const { Router } = require('express');
-const router = new Router();
+const EventRouter = new Router(); 
+const routeGuard = require('./../middleware/route-guard');
 
 // Models
 const Event = require('../models/event');
 const User = require('../models/user');
 
-router.get('/', (req, res, next) => {
+EventRouter.get('/', (req, res, next) => {
   Event.find()
-    .then((restaurants) => {
+    .then((events) => {
       res.json({
-        restaurants: restaurants
+        Event: events
       });
     })
     .catch((error) => {
@@ -19,20 +20,61 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
-  // get specific event
+EventRouter.post('/create', routeGuard, (req, res, next) => {
+  const { name, category, limit, description, date } = req.body;
+  const userId = req.user._id;
+
+  Event.findOne({ name })
+  .then(document => {
+    if (!document) {
+      return Event.create({
+        name,
+        userId,
+        category,
+        limit,
+        description, 
+        date
+      });
+    } else { 
+      const error = new Error("There's already an Event with that name.");
+      return Promise.reject(error);
+    }
+  })
+  .then(event => {
+    res.json({ });
+  })
+  .catch(error => {
+    next(error);
+  });
 });
 
-router.post('/:id', (req, res, next) => {
-  // create specific event
+EventRouter.post('/:id/edit', routeGuard, (req, res, next) => {
+  const eventId = req.params.eventId;
+
+  Event.findByIdAndUpdate(
+    eventId,
+    {...req.body}
+  )
+  .then(event => {
+    console.log('Updated event on server side', event)
+  })
+  .catch(error => {
+    console.log('Not updated on server side', error)
+  });
 });
 
-router.post('/:id/edit', (req, res, next) => {
-  // edit specific event
+EventRouter.post('/:id/delete', (req, res, next) => {
+  const eventId = req.params.eventId;
+
+  Event.findByIdAndDelete(
+    eventId
+  )
+  .then(event => {
+    console.log('Delete event on server side', event)
+  })
+  .catch(error => {
+    console.log('Not deleted on server side', error)
+  });
 });
 
-router.post('/:id/delete', (req, res, next) => {
-  // delete specific event
-});
-
-module.exports = router;
+module.exports = EventRouter;

@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  username: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },

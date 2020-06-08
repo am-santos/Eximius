@@ -38,7 +38,7 @@ class LoginView extends Component {
 
   render() {
     return (
-      <div className="logIn">
+      <div className="form">
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='username-input'></label>
           <input

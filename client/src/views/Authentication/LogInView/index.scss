@@ -1,17 +1,17 @@
-.logIn {
+.form {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   form {
-    width: 40vh;
+    width: 35vh;
     background-color: rgba($color: #fff, $alpha: 0.1 );
     padding: 4em 0;
     border-radius: 15px;
   }
   input {
-    width: 60vw;
+    width: 50vw;
     background-color: #121212;
     border-radius: 30px;
     color: white;

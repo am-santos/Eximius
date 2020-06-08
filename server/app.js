@@ -15,7 +15,6 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const userRouter = require('./routes/user');
 
-
 const app = express();
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
@@ -43,7 +42,7 @@ app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
 app.use('/', indexRouter);
-app.use('/authentication', authenticationRouter);
+app.use('/api/authentication', authenticationRouter);
 
 app.use('/profile', userRouter);
 

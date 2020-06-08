@@ -1,56 +1,80 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
 /* Events */
 import HomeView from './views/HomeView';
-import EventSingleView from './views/EventSingleView';
-import MyEventListView from './views/MyEventListView';
-import CreateEventView from './views/CreateEventView';
-import EventEditView from './views/EventEditView';
+//import EventSingleView from './views/EventSingleView';
+//import MyEventListView from './views/MyEventListView';
+//import CreateEventView from './views/CreateEventView';
+//import EventEditView from './views/EventEditView';
 
 /* Authentication */
-import LogInView from './views/LogInView';
-import SignUpView from './views/SignUpView';
+//import LogInView from './views/Authentication/LogInView';
+import SignUpView from './views/Authentication/SignUpView';
 
 /* Profile */
-import ProfileView from './views/ProfileView';
-import EditProfileView from './views/EditProfileView';
+//import ProfileView from './views/ProfileView';
+//import EditProfileView from './views/EditProfileView';
 
 /* Contact Us */
-import ContactUsView from './views/ContactUsView';
+//import ContactUsView from './views/ContactUsView';
 
-function App() {
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        {/* LogoBar or NavBar */}
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+  }
 
-        <Switch>
-          {/* Events /> */}
-          <Route path='/' component={HomeView} />
-          <Route path='/event/:id' component={EventSingleView} />
-          <Route path='/my-events' component={MyEventListView} />
-          <Route path='/event/create' component={CreateEventView} />
-          <Route path='/event/:id/edit' component={EventEditView} />
+  updateUser = user => {
+    this.setState({
+      user
+    });
+  };
 
-          {/* Authentication /> */}
-          <Route path='/authentication/log-in' component={LogInView} />
-          <Route path='/authentication/sign-up/:token' component={SignUpView} />
+  render() {
+    return (
+      <div className='App'>
+        <BrowserRouter>
+          {/* LogoBar or NavBar */}
 
-          {/* Profile /> */}
-          <Route path='/profile/sign-up' component={ProfileView} />
-          <Route path='/profile/edit' component={EditProfileView} />
+          <Switch>
+            {/* Authentication /> */}
+            {/* <Route path='/authentication/log-in' component={LogInView} /> */}
+            {/* <Route path='/authentication/sign-up' exact component={SignUpView} /> */}
+            
+            <Route
+                path="/authentication/sign-up"
+                render={props => (
+                  <SignUpView {...props} updateUser={this.updateUser} />
+                )}
+              />
+            
+            {/* Events /> */}
+            <Route path='/' component={HomeView} />
+            {/* <Route path='/event/:id' component={EventSingleView} />
+            <Route path='/my-events' component={MyEventListView} />
+            <Route path='/event/create' component={CreateEventView} />
+            <Route path='/event/:id/edit' component={EventEditView} /> */}
 
-          {/* Contact Us /> */}
-          <Route path='/contact-us' component={ContactUsView} />
-          {/* <Route path='/contact-us/edit' component={EditProfileView} /> */}
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
+            
+
+            {/* Profile /> */}
+            {/* <Route path='/profile' component={ProfileView} />
+            <Route path='/profile/edit' component={EditProfileView} /> */}
+
+            {/* Contact Us /> */}
+            {/* <Route path='/contact-us' component={ContactUsView} />
+            <Route path='/contact-us/edit' component={EditProfileView} /> */}
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;

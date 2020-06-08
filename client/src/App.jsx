@@ -4,6 +4,9 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import './App.scss';
 
+/*Import Services */
+import { loadAuthenticatedUser } from './services/authentication';
+
 /* Events */
 import HomeView from './views/HomeView';
 //import EventSingleView from './views/EventSingleView';
@@ -28,6 +31,16 @@ class App extends Component {
     this.state = {
       user: null
     };
+  }
+
+  componentDidMount() {
+    loadAuthenticatedUser()
+      .then((user) => {
+        this.updateUser(user);
+      })
+      .catch((err) => {
+        console.log('ERROR ON COMPONENT DID MOUNT, ERROR ->', err);
+      });
   }
 
   updateUser = (user) => {

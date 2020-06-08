@@ -1,8 +1,6 @@
 .home {
-  height: 100vh;
-  //background: url('/images/homePage.jpg') center/70vh no-repeat;
-  //background: rgba($color: #000, $alpha: 0.1) center no-repeat;
-  background: #000000;  /* fallback colour. Make sure this is just one solid colour. */
+  height: 100vh;  
+  /*background: url("/images/homePage.jpg") center/100vh;*/
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/homePage.jpg") center/100vh;
   display: flex;
   flex-direction: column;
@@ -19,7 +17,20 @@
     text-transform: uppercase;
     font-size: 2em;
     padding: 0.5em;
-    background-color: rgba($color: #fff, $alpha: 0.1);
+    background-color: rgba($color: #fff, $alpha: 0.2);
     border-radius: 2em;
   }
 }
+
+.contactUs {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+

@@ -44,4 +44,15 @@ const logIn = (body) => {
     });
 }; */
 
-export { signUp, logIn };
+const loadAuthenticatedUser = () => {
+  return baseAuthenticationService
+    .get('/me')
+    .then((response) => {
+      return Promise.resolve(response.data.user);
+    })
+    .catch((err) => {
+      return Promise.reject(err);
+    });
+};
+
+export { signUp, logIn, loadAuthenticatedUser };

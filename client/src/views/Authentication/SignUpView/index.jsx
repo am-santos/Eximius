@@ -40,7 +40,7 @@ class SignUpView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='email'></label>
           <input
@@ -70,7 +70,7 @@ class SignUpView extends Component {
             onChange={this.handleInputChange}
           />
 
-          <button>Submit User</button>
+          <button>Sign Up</button>
         </form>
       </div>
     );

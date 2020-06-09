@@ -5,10 +5,11 @@ const baseEventService = axios.create({
 })
 
 const listEvents = () => {
-  return baseAuthenticationService
-    .post('/list')
+  return baseEventService
+    .get('/list')
     .then((response) => {
-      const events = response.data.event;
+      console.log(response);
+      const events = response.data;
       return Promise.resolve(events);
     })
     .catch((error) => Promise.reject(error));

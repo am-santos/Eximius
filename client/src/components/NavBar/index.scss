@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: grey;
+  img {
+    width: 3em;
+  }
+
+  left: 0;
+  bottom: 0;
+}

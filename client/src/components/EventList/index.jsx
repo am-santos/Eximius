@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import './index.scss';
 
 function EventList(props) {
@@ -7,11 +9,13 @@ function EventList(props) {
   console.log(event);
   return (
     <div className="eventCard">
-      <p>{event.name}</p>
-      <p>{event.date}</p>
-      <div>
-        <img src={event.image} alt={event.name} />
-      </div>
+      <Link to={`/event/${event._id}`} >
+        <p>{event.name}</p>
+        <p>{event.date}</p>
+        <div>
+          <img src={event.image} alt={event.name} />
+        </div>
+      </Link>
     </div>
   )
 }

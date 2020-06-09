@@ -9,7 +9,7 @@ import { loadAuthenticatedUser } from './services/authentication';
 
 /* Events */
 import HomeView from './views/HomeView';
-//import EventSingleView from './views/EventSingleView';
+import EventSingleView from './views/EventSingleView';
 //import MyEventListView from './views/MyEventListView';
 import CreateEventView from './views/CreateEventView';
 import EventEditView from './views/EventEditView';
@@ -79,8 +79,9 @@ class App extends Component {
               render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
             />
 
-            {/* <Route path='/event/:id' component={EventSingleView} />
-            <Route path='/my-events' component={MyEventListView} /> */}
+            <Route exact path='/event/create' exact render={(props) => <CreateEventView {...props} user={this.state.user} />}/>
+            <Route path='/event/:id' exact component={EventSingleView} />
+           {/* <Route path='/my-events' component={MyEventListView} /> */}
 
             {/* Profile /> */}
             <Route
@@ -95,9 +96,8 @@ class App extends Component {
               render={(props) => <ProfileView {...props} user={this.state.user} />}
             />
 
-              {/* Events /> */}
+            {/* Events /> */}
             <Route path='/event/:id/edit' component={EventEditView} />
-            <Route exact path='/event/create' render={(props) => <CreateEventView {...props} user={this.state.user} />}/>
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />
             <Route path='/contact-us/edit' component={EditProfileView} /> */}

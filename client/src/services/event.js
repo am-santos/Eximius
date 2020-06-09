@@ -8,7 +8,6 @@ const listEvents = () => {
   return baseEventService
     .get('/list')
     .then((response) => {
-      console.log(response);
       const events = response.data.event;
       return Promise.resolve(events);
     })
@@ -16,7 +15,7 @@ const listEvents = () => {
 };
 
 const createEvent = (body) => {
-  console.log('body', body);
+  console.log(body.date);
   const form = new FormData();
   form.append('name', body.name);
   form.append('image', body.image);
@@ -37,4 +36,15 @@ const createEvent = (body) => {
     });
 };
 
-export { listEvents, createEvent };
+const singleEvent = (id) => {
+  return baseEventService
+  .get(`/${id}`)
+  .then(response => {
+    console.log('single event',response)
+    const event = response.data.event
+    return Promise.resolve(event)
+  })
+  .catch(error => Promise.reject(error))
+}
+
+export { listEvents, createEvent, singleEvent };

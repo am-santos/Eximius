@@ -6,8 +6,10 @@ class EditEventView extends Component {
     super(props);
     this.state = {
       name: '',
-      type: '',
+      category: '',
       date: '',
+      location: '',
+      image: null,
       theme: '',
       description: ''
     };
@@ -31,40 +33,49 @@ class EditEventView extends Component {
             //value={this.state.name}
             //onChange={this.handleInputChange}
           />
-          <label htmlFor='Type-input'></label>
+          <label htmlFor='type-input'></label>
           <input
             id='type-input'
             name='type'
             type='text'
             placeholder='Type'
-            //value={this.state.username}
+            //value={this.state.type}
             //onChange={this.handleInputChange}
           />
-          <label htmlFor='Date-input'></label>
+          <label htmlFor='date-input'></label>
           <input
             id='date-input'
             name='date'
             type='date'
             placeholder='Date'
-            //value={this.state.password}
+            //value={this.state.date.day}
             //onChange={this.handleInputChange}
           />
-          <label htmlFor='Theme-input'></label>
+          <label htmlFor='time-input'></label>
+          <input
+            id='date-input'
+            name='date'
+            type='date'
+            placeholder='Time'
+            //value={this.state.date.time}
+            //onChange={this.handleInputChange}
+          />
+          <label htmlFor='theme-input'></label>
           <input
             id='theme-input'
             name='theme'
             type='text'
             placeholder='Theme'
-            //value={this.state.username}
+            //value={this.state.theme}
             //onChange={this.handleInputChange}
           />
-          <label htmlFor='Discription-input'></label>
+          <label htmlFor='description-input'></label>
           <input
-            id='discription-input'
-            name='discription'
+            id='description-input'
+            name='description'
             type='text'
-            placeholder='Discription'
-            //value={this.state.password}
+            placeholder='description'
+            //value={this.state.description}
             //onChange={this.handleInputChange}
           />
           <button>Create Event</button>

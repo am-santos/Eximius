@@ -113,9 +113,9 @@ router.post('/sign-up/:token', (req, res, next) => {
   User.findOne({ invitationToken: token })
     .then((oldUser) => {
       const invitationList = oldUser.invitationToken;
-      console.log('INVITATION LIST', invitationList);
+      // console.log('INVITATION LIST', invitationList);
       invitationList.splice(invitationList.indexOf(token), 1);
-      console.log('INVITATION LIST AFTER SLICE', invitationList);
+      // console.log('INVITATION LIST AFTER SLICE', invitationList);
       return User.findByIdAndUpdate(oldUser._id, { invitationToken: invitationList });
     })
     .then((oldUser) => {

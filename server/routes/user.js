@@ -15,15 +15,16 @@ UserRouter.get('/profile', routeGuard, (req, res) => {
 
 UserRouter.get('/user', (req, res, next) => {
   User.find()
-  .then(users => res.json({users}))
-  .catch(error => next(error));
+    .then((users) => res.json({ users }))
+    .catch((error) => next(error));
 });
 
 UserRouter.post('/user/:id/edit', (req, res, next) => {
   const userId = req.params.id;
-  User.findByIdAndUpdate(userId, {...req.body})
-    .then(user => console.log(user))
-    .catch(error => next(error));
+
+  User.findByIdAndUpdate(userId, { ...req.body })
+    .then((user) => console.log(user))
+    .catch((error) => next(error));
 });
 
 module.exports = UserRouter;

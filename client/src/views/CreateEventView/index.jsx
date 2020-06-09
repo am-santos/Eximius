@@ -24,8 +24,8 @@ class CreateEventView extends Component {
 
   handleFileInputChange = (event) => {
     const { name } = event.target;
-    // console.dir('EVENT.TARGET ->', event.target);
-    // console.log('EVENT.TARGET.FILES ->', event.target.files);
+    console.dir('EVENT.TARGET ->', event.target);
+    console.log('EVENT.TARGET.FILES ->', event.target.files);
     const file = event.target.files[0];
     this.setState({
       [name]: file

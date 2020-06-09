@@ -15,6 +15,7 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const userRouter = require('./routes/user');
 const eventRouter = require('./routes/event');
+const attendanceRouter = require('./routes/attendance');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use(bindUserToViewLocals);
 app.use('/', indexRouter);
 app.use('/api/authentication', authenticationRouter);
 app.use('/api/event', eventRouter);
+app.use('/api/attendance', attendanceRouter);
 
 app.use('/api/profile', userRouter);
 

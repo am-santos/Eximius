@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.scss';
 
-import listEvents from './../../services/event';
+import { listEvents } from './../../services/event';
 
 import EventList from './../../components/EventList';
 

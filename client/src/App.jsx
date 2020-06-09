@@ -83,7 +83,7 @@ class App extends Component {
             {/* <Route path='/event/:id' component={EventSingleView} />
             <Route path='/my-events' component={MyEventListView} /> */}
             <Route path='/event/:id/edit' component={EventEditView} />
-            <Route exact path='/event/create' component={CreateEventView} />
+            <Route exact path='/event/create' render={(props) => <CreateEventView {...props} userId={this.state.user._id} />}/>
 
             {/* Profile /> */}
             <Route

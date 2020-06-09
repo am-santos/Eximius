@@ -6,9 +6,9 @@ const baseEventService = axios.create({
 
 const listEvents = () => {
   return baseEventService
-    .post('/list')
+    .get('/list')
     .then((response) => {
-      const events = response.data.event;
+      const events = response.data;
       return Promise.resolve(events);
     })
     .catch((error) => Promise.reject(error));

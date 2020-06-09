@@ -8,7 +8,7 @@ const routeGuard = require('./../middleware/route-guard');
 const Event = require('../models/event');
 const User = require('../models/user');
 
-EventRouter.get('/', (req, res, next) => {
+EventRouter.get('/list', (req, res, next) => {
   Event.find()
     .then((events) => {
       res.json({

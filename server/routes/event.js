@@ -62,7 +62,7 @@ EventRouter.post('/create', uploader.single('image'), routeGuard, (req, res, nex
     }
   })
   .then(event => {
-    res.json({ });
+    res.json({ event});
   })
   .catch(error => {
     next(error);
@@ -77,10 +77,10 @@ EventRouter.post('/:id/edit', routeGuard, (req, res, next) => {
     {...req.body}
   )
   .then(event => {
-    console.log('Updated event on server side', event)
+    console.log('Updated event on server side', event);
   })
   .catch(error => {
-    console.log('Not updated on server side', error)
+    console.log('Not updated on server side', error);
   });
 });
 
@@ -91,10 +91,10 @@ EventRouter.post('/:id/delete', (req, res, next) => {
     eventId
   )
   .then(event => {
-    console.log('Delete event on server side', event)
+    console.log('Delete event on server side', event);
   })
   .catch(error => {
-    console.log('Not deleted on server side', error)
+    console.log('Not deleted on server side', error);
   });
 });
 

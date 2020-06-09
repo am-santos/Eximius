@@ -16,14 +16,13 @@ const listEvents = () => {
 };
 
 const createEvent = body => {
-  console.log(body);
   const form = new FormData();
-  form.append(name, body.name);
-  form.append(image, body.image);
-  form.append(date, body.date);
-  form.append(theme, body.theme);
-  form.append(description, body.description);
-  form.append(category, body.category);
+  form.append('name', body.name);
+  form.append('image', body.image);
+  form.append('date', body.date);
+  form.append('theme', body.theme);
+  form.append('description', body.description);
+  form.append('category', body.category);
 
   return baseEventService
   .post('/create', form)

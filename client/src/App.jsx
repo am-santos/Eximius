@@ -79,11 +79,8 @@ class App extends Component {
               render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
             />
 
-            {/* Events /> */}
             {/* <Route path='/event/:id' component={EventSingleView} />
             <Route path='/my-events' component={MyEventListView} /> */}
-            <Route path='/event/:id/edit' component={EventEditView} />
-            <Route exact path='/event/create' render={(props) => <CreateEventView {...props} userId={this.state.user._id} />}/>
 
             {/* Profile /> */}
             <Route
@@ -98,6 +95,9 @@ class App extends Component {
               render={(props) => <ProfileView {...props} user={this.state.user} />}
             />
 
+              {/* Events /> */}
+            <Route path='/event/:id/edit' component={EventEditView} />
+            <Route exact path='/event/create' render={(props) => <CreateEventView {...props} user={this.state.user} />}/>
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />
             <Route path='/contact-us/edit' component={EditProfileView} /> */}

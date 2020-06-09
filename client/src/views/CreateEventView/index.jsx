@@ -26,7 +26,7 @@ class CreateEventView extends Component {
     event.preventDefault();
 
     const { name, image, date, theme, description, category } = this.state;
-    const userId = this.props.userId;
+    const userId = this.props.user._id;
 
     createEvent({ name, image, date, theme, description, category, userId })
       .then((event) => {

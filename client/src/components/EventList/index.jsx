@@ -2,7 +2,6 @@ import React from 'react'
 
 function EventList(props) {
   const eventList = props.event
-  
   return (
     <div>
       <p>{eventList.name}</p>

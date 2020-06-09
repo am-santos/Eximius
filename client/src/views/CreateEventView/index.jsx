@@ -1,24 +1,27 @@
-import React, { Component } from 'react';
-import './style.scss';
+import React, { Component } from "react";
+import "./style.scss";
 
-import { createEvent } from './../../services/event';
+import { createEvent } from "./../../services/event";
 
 class CreateEventView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      category: '',
-      date: '',
+      name: "",
+      category: "",
+      day: "",
+      time: "",
+      location: "",
       image: null,
-      theme: '',
-      description: ''
+      theme: "",
+      description: "",
     };
   }
 
   handleInputChange = ({ target: { name, value } }) => {
+    console.log(name, value, typeof value);
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -28,20 +31,22 @@ class CreateEventView extends Component {
     // console.log('EVENT.TARGET.FILES ->', event.target.files);
     const file = event.target.files[0];
     this.setState({
-      [name]: file
+      [name]: file,
     });
   };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-
-    const { name, image, date, theme, description, category } = this.state;
+    console.log(this.state.day);
+    console.log(typeof this.state.day);
+    const { name, image, theme, description, category } = this.state;
     const userId = this.props.user._id;
-
-    createEvent({ name, image, date, theme, description, category, userId })
+    const date = [ this.state.day , this.state.time ];
+    console.log(date)
+    createEvent({ name, image, theme, date, description, category, userId })
       .then((event) => {
         // Redirect user to home page after successful sign up
-        this.props.history.push('/');
+        this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -73,16 +78,23 @@ class CreateEventView extends Component {
             value={this.state.category}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='Date-input'></label>
+          <label htmlFor='date-input'></label>
           <input
             id='date-input'
             name='date'
             type='date'
-            placeholder='Date'
-            value={this.state.date}
+            value={this.state.day}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='Theme-input'></label>
+          <input
+            id='time-input'
+            name='time'
+            type='time'
+            placeholder='Time'
+            value={this.state.time}
+            onChange={this.handleInputChange}
+          />
+          <label htmlFor='theme-input'></label>
           <input
             id='theme-input'
             name='theme'
@@ -91,7 +103,7 @@ class CreateEventView extends Component {
             value={this.state.theme}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='Description-input'></label>
+          <label htmlFor='description-input'></label>
           <input
             id='description-input'
             name='description'

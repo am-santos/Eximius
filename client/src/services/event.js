@@ -16,6 +16,7 @@ const listEvents = () => {
 };
 
 const createEvent = body => {
+  console.log('body',body)
   const form = new FormData();
   form.append('name', body.name);
   form.append('image', body.image);
@@ -27,6 +28,7 @@ const createEvent = body => {
   return baseEventService
   .post('/create', form)
   .then(response => {
+    console.log('response',response)
     const form = response.data.form;
     return Promise.resolve(form)
   })

@@ -46,7 +46,7 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
   console.log('req.file ->', req.file);
   console.log('req.path ->', req.file.path);
 
-  const { name, category, limit, description, date } = req.body;
+  const { name, category, limit, description, date, capacity } = req.body;
   const userId = req.user._id;
   console.log('req.user._id ->', req.user._id);
   let image;
@@ -62,7 +62,8 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
           category,
           limit,
           description,
-          date
+          date,
+          capacity
         });
       } else {
         const error = new Error("There's already an Event with that name.");
@@ -79,11 +80,10 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
 
 EventRouter.get('/:id', (req, res) => {
   const id = req.params.id;
-  Event.findById(id) 
-    .then(event => res.json({event: event}))
-    .catch(error => console.log('event not found', error));
+  Event.findById(id)
+    .then((event) => res.json({ event: event }))
+    .catch((error) => console.log('event not found', error));
 });
-
 
 EventRouter.post('/:id/edit', routeGuard, (req, res, next) => {
   const eventId = req.params.eventId;

@@ -1,55 +1,53 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true,
+    trim: true
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User'
   },
   category: {
     type: String,
-    trim: true,
+    trim: true
   },
   image: {
     type: String,
-    default: "",
+    default: ''
   },
-  limit: {
-    type: Number,
+  capacity: {
+    type: Number
   },
   theme: {
-    type: String,
+    type: String
   },
   description: {
-    type: String,
+    type: String
   },
   city: {
-    type: String,
+    type: String
   },
-  date: [
-    {
-      day: String,
-      time: String,
-    },
-  ],
+  date: {
+    day: String,
+    time: String
+  },
   location: {
     type: {
       type: String,
-      default: "Point",
+      default: 'Point'
     },
     coordinates: [
       {
         type: Number,
         min: -180,
-        max: 180,
-      },
-    ],
-  },
+        max: 180
+      }
+    ]
+  }
 });
 
-module.exports = mongoose.model("Event", schema);
+module.exports = mongoose.model('Event', schema);

@@ -8,6 +8,7 @@ const listEvents = () => {
   return baseEventService
     .get('/list')
     .then((response) => {
+      console.log(response);
       const events = response.data;
       return Promise.resolve(events);
     })

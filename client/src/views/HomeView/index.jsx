@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import './index.scss';
 
-import { listEvents } from './../../services/event';
+import listEvents from './../../services/event';
 
-import Event from './../../components/Event';
+import EventList from './../../components/EventList';
 
 class HomeView extends Component {
   constructor (props) {
@@ -16,7 +16,7 @@ class HomeView extends Component {
   }
 
   loadEvents() {
-    listEvents 
+    listEvents() 
       .then(events => {
         this.setState({
           events
@@ -35,20 +35,28 @@ class HomeView extends Component {
       <div>
         {user && (
           <>
-            {this.state.events.map(event => {
-              <Event key={event._id} event={event} />
-            })}
+            {!this.state.events.length && 
+              (
+              <><p>There are no events at the moment</p></>
+              )
+              ||
+              (<><p>List of events</p>
+                {this.state.events.map(event => {
+                  return <EventList key={event._id} event={event} />
+                })}
+              </>)  
+            }  
           </>
         ) || (
           <>
-          <section className="home">
-            <h1>Eximius</h1>
+            <section className="home">
+              <h1>Eximius</h1>
 
-            <Link to='/authentication/log-in'>Log In</Link>
-          </section>
-          <section className="contactUs">
-            <Link to='/contact-us'>Contact Us</Link>
-          </section>
+              <Link to='/authentication/log-in'>Log In</Link>
+            </section>
+            <section className="contactUs">
+              <Link to='/contact-us'>Contact Us</Link>
+            </section>
           </>
         )}
       </div>

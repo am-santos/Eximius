@@ -58,6 +58,9 @@ class App extends Component {
           <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
 
           <Switch>
+            <Route path='/' exact updateUser={this.updateUser}
+              render={(props) => <HomeView {...props} user={this.state.user} />}
+            />
             {/* Authentication /> */}
             <Route
               path='/authentication/log-in'
@@ -93,7 +96,6 @@ class App extends Component {
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />
             <Route path='/contact-us/edit' component={EditProfileView} /> */}
-            <Route path='/' component={HomeView} />
           </Switch>
         </BrowserRouter>
       </div>

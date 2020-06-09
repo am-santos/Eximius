@@ -9,7 +9,7 @@ const listEvents = () => {
     .get('/list')
     .then((response) => {
       console.log(response);
-      const events = response.data;
+      const events = response.data.event;
       return Promise.resolve(events);
     })
     .catch((error) => Promise.reject(error));

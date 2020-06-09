@@ -31,7 +31,7 @@ EventRouter.get('/list', (req, res, next) => {
   Event.find()
     .then((events) => {
       res.json({
-        Event: events
+        event: events
       });
     })
     .catch((error) => {

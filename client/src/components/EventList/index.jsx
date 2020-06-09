@@ -1,13 +1,17 @@
 import React from 'react'
 
-function EventList(props) {
-  const eventList = props.event
-  return (
-    <div>
-      <p>{eventList.name}</p>
-      <p>{eventList.category}</p>
-      <p>{eventList.description}</p>
+import './index.scss';
 
+function EventList(props) {
+  const event = props.event
+  console.log(event);
+  return (
+    <div className="eventCard">
+      <p>{event.name}</p>
+      <p>{event.date}</p>
+      <div>
+        <img src={event.image} alt={event.name} />
+      </div>
     </div>
   )
 }

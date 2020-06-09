@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './style.scss';
 
 class CreateEventView extends Component {
   render() {
     return (
-      <div className="form">
+      <div className='form'>
         <h1>Create Event</h1>
         <form>
           <label htmlFor='name'></label>
@@ -54,11 +54,9 @@ class CreateEventView extends Component {
           />
           <button>Create Event</button>
         </form>
-    </div>
-  )}
+      </div>
+    );
+  }
 }
 
 export default CreateEventView;
-
-
-

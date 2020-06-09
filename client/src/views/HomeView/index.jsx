@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './index.scss';
 
+import { listEvents } from './../../services/event';
+
 class HomeView extends Component {
   constructor (props) {
     super(props);

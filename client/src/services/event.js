@@ -5,7 +5,7 @@ const baseEventService = axios.create({
 })
 
 const listEvents = () => {
-  return baseAuthenticationService
+  return baseEventService
     .post('/list')
     .then((response) => {
       const events = response.data.event;
@@ -14,4 +14,4 @@ const listEvents = () => {
     .catch((error) => Promise.reject(error));
 };
 
-export default listEventsl;
+export default listEvents;

@@ -1,12 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './style.scss';
 
 class EditEventView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      type: '',
+      date: '',
+      theme: '',
+      description: ''
+    };
+  }
+
+  handleFormSubmission() {}
+
+  handleInputChanges() {}
+
   render() {
     return (
-      <div className="form">
+      <div className='form'>
         <h1>Edit Event</h1>
-        <form>
+        <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='name'></label>
           <input
             id='name-input'
@@ -29,7 +44,7 @@ class EditEventView extends Component {
           <input
             id='date-input'
             name='date'
-            type='text'
+            type='date'
             placeholder='Date'
             //value={this.state.password}
             //onChange={this.handleInputChange}
@@ -54,8 +69,9 @@ class EditEventView extends Component {
           />
           <button>Create Event</button>
         </form>
-    </div>
-  )}
+      </div>
+    );
+  }
 }
 
 export default EditEventView;

@@ -20,7 +20,7 @@ import SignUpView from './views/Authentication/SignUpView';
 
 /* Profile */
 import ProfileView from './views/ProfileView';
-//import EditProfileView from './views/EditProfileView';
+import EditProfileView from './views/EditProfileView';
 
 /* Contact Us */
 //import ContactUsView from './views/ContactUsView';
@@ -39,7 +39,7 @@ class App extends Component {
         this.updateUser(user);
       })
       .catch((err) => {
-        console.log('ERROR ON COMPONENT DID MOUNT, ERROR ->', err);
+        console.log('ERROR ON APP.JSX - COMPONENTDIDMOUNT, ERROR ->', err);
       });
   }
 
@@ -84,11 +84,16 @@ class App extends Component {
 
             {/* Profile /> */}
             <Route
+              path='/profile/edit'
+              updateUser={this.updateUser}
+              component={(props) => <EditProfileView {...props} user={this.state.user} />}
+            />
+
+            <Route
               path='/profile'
               updateUser={this.updateUser}
               render={(props) => <ProfileView {...props} user={this.state.user} />}
             />
-            {/*<Route path='/profile/edit' component={EditProfileView} /> */}
 
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />

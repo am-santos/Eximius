@@ -10,19 +10,19 @@ class CreateEventView extends Component {
       name: '',
       category: '',
       date: '',
-      image: '',
+      image: null,
       theme: '',
       description: ''
-    }
+    };
   }
 
   handleInputChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value
-    })
+    });
   };
 
-  handleFormSubmission = event => {
+  handleFormSubmission = (event) => {
     event.preventDefault();
 
     const { name, image, date, theme, description, category } = this.state;
@@ -36,9 +36,7 @@ class CreateEventView extends Component {
       .catch((error) => {
         console.log(error);
       });
-  }
-
-
+  };
 
   render() {
     return (
@@ -54,6 +52,8 @@ class CreateEventView extends Component {
             value={this.state.name}
             onChange={this.handleInputChange}
           />
+          <label htmlFor='image-input'></label>
+          <input id='image-input' name='image' type='file' onChange={this.handleInputChange} />
           <label htmlFor='Category-input'></label>
           <input
             id='category-input'

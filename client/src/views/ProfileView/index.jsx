@@ -18,12 +18,14 @@ const ProfileView = (props) => {
               <Link to='/profile/invite'>
                 <p>{user.invitationToken.length}</p>
                 <img src='#' alt='letter image' />
+                {/* ADD LETTER IMAGE */}
               </Link>
             </>
           )) || (
             <>
               <p>You have no invitations.</p>
               <img src='#' alt='letter image' />
+              {/* ADD LETTER IMAGE */}
             </>
           )}
         </>

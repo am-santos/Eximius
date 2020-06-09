@@ -44,7 +44,6 @@ class App extends Component {
   }
 
   updateUser = (user) => {
-    console.log('INSIDE UPDATE USER ->', user);
     this.setState({
       user
     });

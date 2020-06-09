@@ -1,0 +1,70 @@
+import React, { Component } from 'react'
+
+import {singleEvent} from './../../services/event';
+
+import NavBar from './../../components/NavBar';
+
+
+class EventSingleView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: '',
+      going: false
+    }
+  }
+
+  loadEvent = () => {
+    singleEvent(this.props.match.params.id)
+    .then(event => {
+      this.setState({
+        event
+      })
+    })
+    .catch(error => console.log('no event received', error))
+  }
+
+  changeGoing = () => {
+    this.setState({
+      going: !this.state.going
+    })
+  }
+
+  componentDidMount() {
+    this.loadEvent();
+  }
+
+  render() {
+    const event = this.state.event;
+    console.log(this.state.event)
+    return (
+      <div>
+        <h1>{event.name}</h1>
+        <em>{event.category}</em>
+        <img src={event.image} alt={event.name}/>
+        <div>
+          <div>
+            <p>Location</p>
+            <p>{event.city}</p>
+          </div>
+          <div>
+            <p>Time Left</p>
+            <p>24:00:00</p>
+          </div>
+        </div>
+        <p>{event.theme}</p>
+        {this.state.going && (
+          <>
+            <p>{event.description}</p>
+            <button onClick={this.changeGoing}>I'm Out</button>
+          </>
+        ) || (
+          <button onClick={this.changeGoing}>I'm in</button>
+        )}
+        <NavBar />
+      </div>
+    )
+  }
+}
+
+export default EventSingleView;

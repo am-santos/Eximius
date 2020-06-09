@@ -14,6 +14,7 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const userRouter = require('./routes/user');
+const eventRouter = require('./routes/event');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
+      maxAge: 5 * 24 * 60 * 60 * 1000,
       sameSite: 'lax',
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production'
@@ -43,6 +44,7 @@ app.use(bindUserToViewLocals);
 
 app.use('/', indexRouter);
 app.use('/api/authentication', authenticationRouter);
+app.use('/api/event', eventRouter);
 
 app.use('/api/profile', userRouter);
 

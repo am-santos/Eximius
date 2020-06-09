@@ -1,38 +1,76 @@
 import React, { Component } from 'react';
 import './style.scss';
 
+import { createEvent } from './../../services/event';
+
 class CreateEventView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      category: '',
+      date: '',
+      image: '',
+      theme: '',
+      description: ''
+    }
+  }
+
+  handleInputChange = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value
+    })
+  };
+
+  handleFormSubmission = event => {
+    event.preventDefault();
+
+    const { name, image, date, theme, description, category } = this.state;
+    const userId = this.props.userId;
+
+    createEvent({ name, image, date, theme, description, category, userId })
+      .then((event) => {
+        // Redirect user to home page after successful sign up
+        this.props.history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+
+
   render() {
     return (
       <div className='form'>
         <h1>Create Event</h1>
-        <form>
+        <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='name'></label>
           <input
             id='name-input'
             name='name'
             type='text'
             placeholder='Name'
-            //value={this.state.name}
-            //onChange={this.handleInputChange}
+            value={this.state.name}
+            onChange={this.handleInputChange}
           />
-          <label htmlFor='Type-input'></label>
+          <label htmlFor='Category-input'></label>
           <input
-            id='type-input'
-            name='type'
+            id='category-input'
+            name='category'
             type='text'
-            placeholder='Type'
-            //value={this.state.username}
-            //onChange={this.handleInputChange}
+            placeholder='Category'
+            value={this.state.category}
+            onChange={this.handleInputChange}
           />
           <label htmlFor='Date-input'></label>
           <input
             id='date-input'
             name='date'
-            type='text'
+            type='date'
             placeholder='Date'
-            //value={this.state.password}
-            //onChange={this.handleInputChange}
+            value={this.state.date}
+            onChange={this.handleInputChange}
           />
           <label htmlFor='Theme-input'></label>
           <input
@@ -40,17 +78,17 @@ class CreateEventView extends Component {
             name='theme'
             type='text'
             placeholder='Theme'
-            //value={this.state.username}
-            //onChange={this.handleInputChange}
+            value={this.state.theme}
+            onChange={this.handleInputChange}
           />
-          <label htmlFor='Discription-input'></label>
+          <label htmlFor='Description-input'></label>
           <input
-            id='discription-input'
-            name='discription'
+            id='description-input'
+            name='description'
             type='text'
-            placeholder='Discription'
-            //value={this.state.password}
-            //onChange={this.handleInputChange}
+            placeholder='Description'
+            value={this.state.description}
+            onChange={this.handleInputChange}
           />
           <button>Create Event</button>
         </form>

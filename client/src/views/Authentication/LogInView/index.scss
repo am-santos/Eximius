@@ -33,4 +33,15 @@
     text-transform: lowercase;
     font-weight: bold;
   }
+  
+}
+@media (min-width: 841px) {
+  .form {
+    form {
+      width: 70vw;
+    }
+    input {
+      width: 60vw;
+    }
+  }
 }

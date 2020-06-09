@@ -4,11 +4,30 @@ const { Router } = require('express');
 const EventRouter = new Router(); 
 const routeGuard = require('./../middleware/route-guard');
 
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'event-image-eximius'
+  }
+});
+
+const uploader = multer({ storage });
+
 // Models
 const Event = require('../models/event');
 const User = require('../models/user');
 
-EventRouter.get('/', (req, res, next) => {
+EventRouter.get('/list', (req, res, next) => {
   Event.find()
     .then((events) => {
       res.json({
@@ -20,9 +39,10 @@ EventRouter.get('/', (req, res, next) => {
     });
 });
 
-EventRouter.post('/create', routeGuard, (req, res, next) => {
+EventRouter.post('/create', uploader.single('image'), routeGuard, (req, res, next) => {
   const { name, category, limit, description, date } = req.body;
   const userId = req.user._id;
+  const image = req.file.path;
 
   Event.findOne({ name })
   .then(document => {
@@ -30,6 +50,7 @@ EventRouter.post('/create', routeGuard, (req, res, next) => {
       return Event.create({
         name,
         userId,
+        image,
         category,
         limit,
         description, 

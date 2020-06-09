@@ -15,6 +15,10 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  image: {
+    type: String,
+    default: ''
+  },
   limit: {
     type: Number
   },

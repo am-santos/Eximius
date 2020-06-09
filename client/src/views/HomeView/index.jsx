@@ -7,6 +7,8 @@ import { listEvents } from './../../services/event';
 
 import EventList from './../../components/EventList';
 
+import NavBar from './../../components/NavBar'
+
 class HomeView extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +50,7 @@ class HomeView extends Component {
                 })}
               </>
             )}
+          <NavBar />
           </>
         )) || (
           <>

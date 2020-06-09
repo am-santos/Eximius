@@ -77,6 +77,14 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
     });
 });
 
+EventRouter.get('/:id', (req, res) => {
+  const id = req.params.id;
+  Event.findById(id) 
+    .then(event => res.json({event: event}))
+    .catch(error => console.log('event not found', error));
+});
+
+
 EventRouter.post('/:id/edit', routeGuard, (req, res, next) => {
   const eventId = req.params.eventId;
 

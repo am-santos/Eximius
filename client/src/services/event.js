@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseEventService = axios.create({
   baseURL: '/api/event'
-})
+});
 
 const listEvents = () => {
   return baseEventService
@@ -15,8 +15,8 @@ const listEvents = () => {
     .catch((error) => Promise.reject(error));
 };
 
-const createEvent = body => {
-  console.log('body',body)
+const createEvent = (body) => {
+  console.log('body', body);
   const form = new FormData();
   form.append('name', body.name);
   form.append('image', body.image);
@@ -26,15 +26,15 @@ const createEvent = body => {
   form.append('category', body.category);
 
   return baseEventService
-  .post('/create', form)
-  .then(response => {
-    console.log('response',response)
-    const form = response.data.form;
-    return Promise.resolve(form)
-  })
-  .catch(error => {
-    return Promise.reject(error);
-  });
+    .post('/create', form)
+    .then((response) => {
+      console.log('response', response);
+      const form = response.data.form;
+      return Promise.resolve(form);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
 };
 
 export { listEvents, createEvent };

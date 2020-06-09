@@ -39,16 +39,18 @@ EventRouter.get('/list', (req, res, next) => {
     });
 });
 
-EventRouter.post('/create', uploader.single('image'), routeGuard, (req, res, next) => {
+EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
   console.log('IM INSIDE SERVER/CREATE');
+  console.log('req ->', req);
   console.log('req.body ->', req.body);
   console.log('req.file ->', req.file);
+  console.log('req.path ->', req.file.path);
 
   const { name, category, limit, description, date } = req.body;
   const userId = req.user._id;
   console.log('req.user._id ->', req.user._id);
   let image;
-  if (req.file.url) image = req.file.url;
+  if (req.file.path) image = req.file.path;
 
   Event.findOne({ name })
     .then((document) => {

@@ -22,6 +22,16 @@ class CreateEventView extends Component {
     });
   };
 
+  handleFileInputChange = (event) => {
+    const { name } = event.target;
+    // console.dir('EVENT.TARGET ->', event.target);
+    // console.log('EVENT.TARGET.FILES ->', event.target.files);
+    const file = event.target.files[0];
+    this.setState({
+      [name]: file
+    });
+  };
+
   handleFormSubmission = (event) => {
     event.preventDefault();
 
@@ -53,7 +63,7 @@ class CreateEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='image-input'></label>
-          <input id='image-input' name='image' type='file' onChange={this.handleInputChange} />
+          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
           <label htmlFor='Category-input'></label>
           <input
             id='category-input'

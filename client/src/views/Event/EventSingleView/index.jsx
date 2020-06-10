@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  { Link } from 'react-router-dom';
 
 import './index.scss';
 
@@ -35,8 +36,12 @@ class EventSingleView extends Component {
   };
 
   registerUser = () => {
-    console.log(this.props)
-    createRegistration()
+    createRegistration(this.props.userId, this.state.event._id)
+      .then(register => {
+        this.changeGoing();
+        console.log(register);
+      })
+      .catch(error => console.log('user not registered', error));
   }
 
   componentDidMount() {
@@ -65,9 +70,11 @@ class EventSingleView extends Component {
         {(this.state.going && (
           <>
             <p>{event.description}</p>
-            <button onClick={this.changeGoing}>I'm Out</button>
+            <button onClick={this.registerUser}>I'm Out</button>
           </>
-        )) || <button onClick={this.changeGoing}>I'm in</button>}
+        )) || <button onClick={this.registerUser}>I'm in</button>}
+
+        <Link to={`/event/${event._id}/edit`}>Edit</Link>
         <NavBar />
       </div>
     );

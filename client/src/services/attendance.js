@@ -35,7 +35,7 @@ const attendanceRegistration = (body) => {
 const createRegistration = (userId, eventId) => {
   // post from /create/:userId/:eventId
   return baseAuthenticationService
-    .get(`/create/${userId}/${eventId}`)
+    .post(`/create/${userId}/${eventId}`)
     .then((response) => Promise.resolve(response.data.users))
     .catch((error) => Promise.reject(error));
 };
@@ -44,7 +44,7 @@ const createRegistration = (userId, eventId) => {
 const deleteRegistration = (body) => {
   // get from /delete/:userId/:eventId
   return baseAuthenticationService
-    .get(`/delete/${body.userId}/${body.eventId}`)
+    .post(`/delete/${body.userId}/${body.eventId}`)
     .then((response) => Promise.resolve(response.data.users))
     .catch((error) => Promise.reject(error));
 };

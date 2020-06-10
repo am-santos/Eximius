@@ -8,10 +8,12 @@ class EditEventView extends Component {
       name: '',
       category: '',
       date: '',
+      time: '',
       location: '',
       image: null,
-      theme: '',
-      description: ''
+      city: '',
+      description: '',
+      capacity: 0
     };
   }
 
@@ -22,7 +24,7 @@ class EditEventView extends Component {
   render() {
     return (
       <div className='form'>
-        <h1>Edit Event</h1>
+        <h1>Create Event</h1>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='name'></label>
           <input
@@ -30,53 +32,66 @@ class EditEventView extends Component {
             name='name'
             type='text'
             placeholder='Name'
-            //value={this.state.name}
-            //onChange={this.handleInputChange}
+            value={this.state.name}
+            onChange={this.handleInputChange}
           />
-          <label htmlFor='type-input'></label>
+          <label htmlFor='image-input'></label>
+          <input 
+            id='image-input' 
+            name='image' 
+            type='file' 
+            onChange={this.handleFileInputChange} 
+          />
+          <label htmlFor='category-input'></label>
           <input
-            id='type-input'
-            name='type'
+            id='category-input'
+            name='category'
             type='text'
-            placeholder='Type'
-            //value={this.state.type}
-            //onChange={this.handleInputChange}
+            placeholder='Category'
+            value={this.state.category}
+            onChange={this.handleInputChange}
+          />
+          <label htmlFor='capacity-input'></label>
+          <input
+            id='capacity-input'
+            name='capacity'
+            type='number'
+            placeholder='Capacity'
+            value={this.state.capacity}
+            onChange={this.handleInputChange}
           />
           <label htmlFor='date-input'></label>
-          <input
-            id='date-input'
-            name='date'
-            type='date'
-            placeholder='Date'
-            //value={this.state.date.day}
-            //onChange={this.handleInputChange}
+          <input 
+            id='date-input' 
+            name='date' 
+            type='date' 
+            onChange={this.handleInputChange} 
           />
-          <label htmlFor='time-input'></label>
           <input
-            id='date-input'
-            name='date'
-            type='date'
+            id='time-input'
+            name='time'
+            type='time'
             placeholder='Time'
-            //value={this.state.date.time}
-            //onChange={this.handleInputChange}
+            value={this.state.time}
+            onChange={this.handleInputChange}
           />
-          <label htmlFor='theme-input'></label>
+          <label htmlFor='city-input'></label>
           <input
-            id='theme-input'
-            name='theme'
+            id='city-input'
+            name='city'
             type='text'
-            placeholder='Theme'
-            //value={this.state.theme}
-            //onChange={this.handleInputChange}
+            placeholder='City'
+            value={this.state.city}
+            onChange={this.handleInputChange}
           />
           <label htmlFor='description-input'></label>
           <input
             id='description-input'
             name='description'
             type='text'
-            placeholder='description'
-            //value={this.state.description}
-            //onChange={this.handleInputChange}
+            placeholder='Description'
+            value={this.state.description}
+            onChange={this.handleInputChange}
           />
           <button>Create Event</button>
         </form>

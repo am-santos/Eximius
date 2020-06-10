@@ -64,7 +64,12 @@ class CreateEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='image-input'></label>
-          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
+          <input 
+            id='image-input' 
+            name='image' 
+            type='file' 
+            onChange={this.handleFileInputChange} 
+          />
           <label htmlFor='Category-input'></label>
           <input
             id='category-input'
@@ -84,7 +89,12 @@ class CreateEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='date-input'></label>
-          <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />
+          <input 
+            id='date-input' 
+            name='date' 
+            type='date' 
+            onChange={this.handleInputChange} 
+          />
           <input
             id='time-input'
             name='time'

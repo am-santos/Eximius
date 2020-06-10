@@ -64,26 +64,28 @@ class App extends Component {
               updateUser={this.updateUser}
               render={(props) => <HomeView {...props} user={this.state.user} />}
             />
+            <Route
+              exact
+              path='/authentication/log-in'
+              render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
+            />
+            {/* <Route path='/authentication/sign-up' exact component={SignUpView} /> */}
+
+            <Route
+              exact
+              path='/authentication/sign-up/:token'
+              render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
+            />
+
+            <Route
+              exact
+              path='/authentication/sign-up/eximius-staff-laa'
+              render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
+            />
             {this.state.user && (
               <>
                 {/* Authentication /> */}
                 <Switch>
-                  <Route
-                    path='/authentication/log-in'
-                    render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
-                  />
-                  {/* <Route path='/authentication/sign-up' exact component={SignUpView} /> */}
-
-                  <Route
-                    path='/authentication/sign-up/:token'
-                    render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
-                  />
-
-                  <Route
-                    exact
-                    path='/authentication/sign-up/eximius-staff-laa'
-                    render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
-                  />
                   <Route
                     exact
                     path='/event/create'

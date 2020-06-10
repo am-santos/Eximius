@@ -1,7 +1,8 @@
 .home {
-  height: 100vh;  
+  height: 100vh;
   /*background: url("/images/homePage.jpg") center/100vh;*/
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/homePage.jpg") center/100vh no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('/images/homePage.jpg') center/100vh no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +23,11 @@
   }
 }
 
+.dashboard {
+  background-color: #121212;
+  // height: 115vh;
+}
+
 .contactUs {
   height: 8vh;
   display: flex;
@@ -33,4 +39,3 @@
     color: #fff;
   }
 }
-

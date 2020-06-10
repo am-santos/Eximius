@@ -7,7 +7,7 @@ import { listEvents } from './../../services/event';
 
 import EventList from './../../components/EventList';
 
-import NavBar from './../../components/NavBar'
+import NavBar from './../../components/NavBar';
 
 class HomeView extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class HomeView extends Component {
   render() {
     const user = this.props.user;
     return (
-      <div>
+      <div className='dashboard'>
         {(user && (
           <>
             {(!this.state.events && (
@@ -43,23 +43,23 @@ class HomeView extends Component {
               </>
             )) || (
               <>
-                <p>List of events</p>
+                <h1>Whats coming up?</h1>
                 {this.state.events.map((event) => {
                   return <EventList key={event._id} event={event} />;
                 })}
               </>
             )}
-          <NavBar />
+            <NavBar />
           </>
         )) || (
           <>
-            <section className="home">
+            <section className='home'>
               <h1>Eximius</h1>
 
-              <Link to="/authentication/log-in">Log In</Link>
+              <Link to='/authentication/log-in'>Log In</Link>
             </section>
-            <section className="contactUs">
-              <Link to="/contact-us">Contact Us</Link>
+            <section className='contactUs'>
+              <Link to='/contact-us'>Contact Us</Link>
             </section>
           </>
         )}

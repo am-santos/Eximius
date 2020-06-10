@@ -39,8 +39,8 @@ class ClockCoundDown extends Component {
   render() {
     return (
       <div>
-        {(this.state.displayTime && <h1>{this.state.timeLeft}</h1>) ||
-          (this.state.pastEvent && <h1>You missed this one!</h1>) || <h1>Coming Soon...</h1>}
+        {(this.state.displayTime && <h3>{this.state.timeLeft}</h3>) ||
+          (this.state.pastEvent && <h3>You missed this one!</h3>) || <h3>Coming Soon</h3>}
       </div>
     );
   }

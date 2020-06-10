@@ -12,8 +12,10 @@ function EventList(props) {
   return (
     <div className='eventCard'>
       <Link to={`/event/${event._id}`}>
-        <p>{event.name}</p>
-        <ClockCountDown date={event.date} />
+        <div className='card-title'>
+          <h3>{event.name}</h3>
+          <ClockCountDown date={event.date} />
+        </div>
         <div>
           <img src={event.image} alt={event.name} />
         </div>

@@ -4,11 +4,12 @@
   align-items: center;
   justify-content: space-around;
   width: 100vw;
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255, 255, 255, 0.15);
+  // background-color: #121212;
   img {
     width: 3em;
   }
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
 }

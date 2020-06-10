@@ -12,6 +12,7 @@ class EditEventView extends Component {
       name: '',
       category: '',
       date: '',
+      time: '',
       location: '',
       image: null,
       city: '',
@@ -24,8 +25,13 @@ class EditEventView extends Component {
     singleEvent(this.props.match.params.id)
       .then((event) => {
         console.log('event', event);
+        const newDate = event.date[0].split(',');
+        const time = newDate[1];
+        const date = newDate[0];
         this.setState({
-          ...event
+          ...event,
+          time,
+          date
         });
       })
       .catch((error) => console.log('no event received', error));
@@ -48,7 +54,9 @@ class EditEventView extends Component {
   handleFormSubmission = (event) => {
     event.preventDefault();
     const { name, image, city, description, category, capacity } = this.state;
-    const date = [this.state.date, this.state.time];
+    const date = [this.state.date + ',' + this.state.time];
+
+    console.log(date, 'i am a date');
 
     editEvent(
       { name, image, city, date, description, category, capacity },
@@ -69,69 +77,69 @@ class EditEventView extends Component {
 
   render() {
     return (
-      <div className='form'>
+      <div className="form">
         <h1>Edit Event</h1>
         <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor='name'></label>
+          <label htmlFor="name"></label>
           <input
-            id='name-input'
-            name='name'
-            type='text'
-            placeholder='Name'
+            id="name-input"
+            name="name"
+            type="text"
+            placeholder="Name"
             value={this.state.name}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='image-input'></label>
-          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
-          <label htmlFor='category-input'></label>
+          <label htmlFor="image-input"></label>
+          <input id="image-input" name="image" type="file" onChange={this.handleFileInputChange} />
+          <label htmlFor="category-input"></label>
           <input
-            id='category-input'
-            name='category'
-            type='text'
-            placeholder='Category'
+            id="category-input"
+            name="category"
+            type="text"
+            placeholder="Category"
             value={this.state.category}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='capacity-input'></label>
+          <label htmlFor="capacity-input"></label>
           <input
-            id='capacity-input'
-            name='capacity'
-            type='number'
-            placeholder='Capacity'
+            id="capacity-input"
+            name="capacity"
+            type="number"
+            placeholder="Capacity"
             value={this.state.capacity}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='date-input'></label>
+          <label htmlFor="date-input"></label>
           <input
-            id='date-input'
-            name='date'
+            id="date-input"
+            name="date"
             value={this.state.date}
-            type='date'
+            type="date"
             onChange={this.handleInputChange}
           />
           <input
-            id='time-input'
-            name='time'
-            type='time'
-            placeholder='Time'
+            id="time-input"
+            name="time"
+            type="time"
+            placeholder="Time"
             value={this.state.time}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='city-input'></label>
+          <label htmlFor="city-input"></label>
           <input
-            id='city-input'
-            name='city'
-            type='text'
-            placeholder='City'
+            id="city-input"
+            name="city"
+            type="text"
+            placeholder="City"
             value={this.state.city}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='description-input'></label>
+          <label htmlFor="description-input"></label>
           <input
-            id='description-input'
-            name='description'
-            type='text'
-            placeholder='Description'
+            id="description-input"
+            name="description"
+            type="text"
+            placeholder="Description"
             value={this.state.description}
             onChange={this.handleInputChange}
           />

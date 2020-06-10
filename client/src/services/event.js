@@ -72,4 +72,11 @@ const editEvent = (body, id) => {
     .catch((error) => Promise.reject(error));
 };
 
-export { listEvents, createEvent, singleEvent, editEvent };
+const deleteEvent = (id) => {
+  return baseEventService
+    .post(`/${id}/delete`)
+    .then(response => Promise.resolve(response.data))
+    .catch(err => console.log(err))
+}
+
+export { listEvents, createEvent, singleEvent, editEvent, deleteEvent };

@@ -1,20 +1,20 @@
 function dateToString() {
-  const RightNow = Date.now();
-  console.log(RightNow);
-  console.log(RightNow.getDate());
-  console.log(RightNow.getMonth());
-  console.log(RightNow.getFullYear());
-  console.log(RightNow.getHours());
-  console.log(RightNow.getMinutes());
-  console.log(RightNow.getSeconds());
+  let now = new Date();
 
-  const Date = RightNow.getDate();
-  const Month = RightNow.getMonth();
-  const FullYear = RightNow.getFullYear();
-  const Hours = RightNow.getHours();
-  const Minutes = RightNow.getMinutes();
-  const Seconds = RightNow.getSeconds();
+  let year = now.getFullYear();
+  let month = now.getMonth();
+
   // '2000-01-01,01:01'
-  console.log(Date + '-' + Month + '-' + FullYear + ',' + Hours + ':' + Minutes);
+  return (
+    now.getFullYear() +
+    '-' +
+    month +
+    '-' +
+    now.getDate() +
+    ',' +
+    now.getHours() +
+    ':' +
+    now.getMinutes()
+  );
 }
 console.log(dateToString());

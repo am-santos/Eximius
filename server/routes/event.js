@@ -52,7 +52,7 @@ EventRouter.get('/list', (req, res, next) => {
 
 EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
   const { name, category, description, date, city, capacity } = req.body;
-  console.log(req.body);
+  console.log('EVENT CREATED ->', req.body);
   const userId = req.user._id;
   let image;
   if (req.file.path) image = req.file.path;
@@ -86,11 +86,24 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
 EventRouter.post('/:id/edit', uploader.single('image'), (req, res, next) => {
   const eventId = req.params.id;
   console.log('THIS IS THE BODY', req.body);
-  let image = req.body.image;
-  if (req.file.path) image = req.file.path;
+  let image;
+  if (req.file) {
+    image = req.file.path;
+  } else {
+    image = req.body.image;
+  }
 
-  Event.findByIdAndUpdate(eventId, { ...req.body, image }, { new: true })
+  const { name, category, description, date, city, capacity } = req.body;
+
+  console.log('THIS IS THE image ->', image);
+  console.log('THIS IS THE req.body.image ->', req.body.image);
+  Event.findByIdAndUpdate(
+    eventId,
+    { name, category, description, date, city, capacity },
+    { new: true }
+  )
     .then((event) => {
+      res.json({ event });
       console.log('Updated event on server side', event);
     })
     .catch((error) => {
@@ -104,7 +117,7 @@ EventRouter.post('/:id/delete', (req, res, next) => {
 
   Event.findByIdAndDelete(eventId)
     .then((event) => {
-      res.json({event})
+      res.json({ event });
       console.log('Delete event on server side', event);
     })
     .catch((error) => {

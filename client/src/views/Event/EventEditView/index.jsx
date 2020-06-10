@@ -1,25 +1,69 @@
-import React, { Component } from 'react';
-import './style.scss';
+import React, { Component } from "react";
+import "./style.scss";
+
+import { singleEvent, editEvent } from "./../../../services/event";
 
 class EditEventView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      category: '',
-      date: '',
-      time: '',
-      location: '',
+      name: "",
+      category: "",
+      date: "",
+      location: "",
       image: null,
-      city: '',
-      description: '',
-      capacity: 0
+      city: "",
+      description: "",
+      capacity: 0,
     };
   }
 
-  handleFormSubmission() {}
+  loadEvent = () => {
+    singleEvent(this.props.match.params.id)
+      .then((event) => {
+        console.log("event", event);
+        this.setState({
+          ...event,
+        });
+      })
+      .catch((error) => console.log("no event received", error));
+  };
 
-  handleInputChanges() {}
+  handleInputChange = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleFileInputChange = (event) => {
+    const { name } = event.target;
+    const file = event.target.files[0];
+    this.setState({
+      [name]: file,
+    });
+  };
+
+  handleFormSubmission = (event) => {
+    event.preventDefault();
+    const { name, image, city, description, category, capacity } = this.state;
+    const date = [this.state.date, this.state.time];
+
+    editEvent(
+      { name, image, city, date, description, category, capacity },
+      this.props.match.params.id
+    )
+      .then((event) => {
+        // Redirect user to profile page after successful edit
+        this.props.history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  componentDidMount() {
+    this.loadEvent();
+  }
 
   render() {
     return (
@@ -36,12 +80,7 @@ class EditEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='image-input'></label>
-          <input 
-            id='image-input' 
-            name='image' 
-            type='file' 
-            onChange={this.handleFileInputChange} 
-          />
+          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
           <label htmlFor='category-input'></label>
           <input
             id='category-input'
@@ -61,11 +100,12 @@ class EditEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='date-input'></label>
-          <input 
-            id='date-input' 
-            name='date' 
-            type='date' 
-            onChange={this.handleInputChange} 
+          <input
+            id='date-input'
+            name='date'
+            value={this.state.date}
+            type='date'
+            onChange={this.handleInputChange}
           />
           <input
             id='time-input'
@@ -93,7 +133,7 @@ class EditEventView extends Component {
             value={this.state.description}
             onChange={this.handleInputChange}
           />
-          <button>Create Event</button>
+          <button>Edit Event</button>
         </form>
       </div>
     );

@@ -2,8 +2,12 @@ $buttonColor: #a74ee1;
 $backgroundColor: #121212;
 $fontColor: #fff;
 
-.App {
+html {
   background-color: $backgroundColor;
+}
+
+.App {
+  // background-color: $backgroundColor;
   width: 100vw;
   text-align: center;
   font-family: 'Roboto', sans-serif;

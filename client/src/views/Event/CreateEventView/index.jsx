@@ -85,16 +85,18 @@ class CreateEventView extends Component {
             value={this.state.capacity}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='date-input'></label>
-          <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />
-          <input
-            id='time-input'
-            name='time'
-            type='time'
-            placeholder='Time'
-            value={this.state.time}
-            onChange={this.handleInputChange}
-          />
+          <section className='hourDate'>
+            <label htmlFor='date-input'></label>
+            <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />
+            <input
+              id='time-input'
+              name='time'
+              type='time'
+              placeholder='Time'
+              value={this.state.time}
+              onChange={this.handleInputChange}
+            />
+          </section>
           <label htmlFor='city-input'></label>
           <input
             id='city-input'

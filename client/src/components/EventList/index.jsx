@@ -6,7 +6,6 @@ import './index.scss';
 
 function EventList(props) {
   const event = props.event
-  console.log(event);
   return (
     <div className="eventCard">
       <Link to={`/event/${event._id}`} >

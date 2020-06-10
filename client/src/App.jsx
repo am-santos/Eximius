@@ -87,7 +87,6 @@ class App extends Component {
             <Route
               exact
               path='/event/create'
-              exact
               render={(props) => <CreateEventView {...props} user={this.state.user} />}
             />
             <Route path='/event/:id' exact 

@@ -42,7 +42,6 @@ const singleEvent = (id) => {
   return baseEventService
     .get(`/${id}`)
     .then((response) => {
-      console.log('single event', response);
       const event = response.data.event;
       return Promise.resolve(event);
     })

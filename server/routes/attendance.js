@@ -55,8 +55,11 @@ router.post('/create/:userId/:eventId', (req, res, next) => {
 router.post('/delete/:userId/:eventId', (req, res, next) => {
   const { userId, eventId } = req.params;
 
-  Attendance.findByIdAndDelete({ userId, eventId })
-    .then((registration) => console.log('Delete registration on server side', registration))
+  Attendance.findOneAndDelete({ userId, eventId })
+    .then((registration) => {
+      console.log('Delete registration on server side', registration); 
+      res.json({registration});
+    })
     .catch((error) => next(error));
 });
 

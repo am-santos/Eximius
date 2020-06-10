@@ -5,19 +5,19 @@ const baseAuthenticationService = axios.create({
 });
 
 // Find all users for a specific event
-const listUsersForEvent = (body) => {
+const listUsersForEvent = (id) => {
   // get from /users/:eventId
   return baseAuthenticationService
-    .get(`/users/${body.id}`)
+    .get(`/users/${id}`)
     .then((response) => Promise.resolve(response.data.users))
     .catch((error) => Promise.reject(error));
 };
 
 // Find all events for a specific user
-const listEventsForUser = (body) => {
+const listEventsForUser = (id) => {
   // get from /events/:userId
   return baseAuthenticationService
-    .get(`/events/${body.id}`)
+    .get(`/events/${id}`)
     .then((response) => Promise.resolve(response.data.users))
     .catch((error) => Promise.reject(error));
 };

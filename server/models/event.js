@@ -31,10 +31,11 @@ const schema = new mongoose.Schema({
   city: {
     type: String
   },
-  date: {
-    day: String,
-    time: String
-  },
+  date: [
+    {
+      type: String
+    }
+  ],
   location: {
     type: {
       type: String,

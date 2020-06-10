@@ -13,7 +13,7 @@ class CreateEventView extends Component {
       time: '',
       location: '',
       image: null,
-      theme: '',
+      city: '',
       description: '',
       capacity: 0
     };
@@ -36,11 +36,11 @@ class CreateEventView extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const { name, image, theme, description, category, capacity } = this.state;
+    const { name, image, city, description, category, capacity } = this.state;
     const userId = this.props.user._id;
-    const date = { day: this.state.date, time: this.state.time };
+    const date = [this.state.date, this.state.time];
 
-    createEvent({ name, image, theme, date, description, category, userId, capacity })
+    createEvent({ name, image, city, date, description, category, userId, capacity })
       .then((event) => {
         this.props.history.push('/');
       })
@@ -93,13 +93,13 @@ class CreateEventView extends Component {
             value={this.state.time}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='theme-input'></label>
+          <label htmlFor='city-input'></label>
           <input
-            id='theme-input'
-            name='theme'
+            id='city-input'
+            name='city'
             type='text'
-            placeholder='Theme'
-            value={this.state.theme}
+            placeholder='City'
+            value={this.state.city}
             onChange={this.handleInputChange}
           />
           <label htmlFor='description-input'></label>

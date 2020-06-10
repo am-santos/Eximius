@@ -8,7 +8,8 @@ import { singleEvent, deleteEvent } from './../../../services/event';
 import {
   createRegistration,
   deleteRegistration,
-  attendanceRegistration
+  attendanceRegistration,
+  listUsersForEvent
 } from './../../../services/attendance';
 
 import NavBar from './../../../components/NavBar';
@@ -19,7 +20,8 @@ class EventSingleView extends Component {
     super(props);
     this.state = {
       event: '',
-      going: ''
+      going: '',
+      attendance: 0
     };
   }
 
@@ -42,12 +44,19 @@ class EventSingleView extends Component {
   checkUserRegistration = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
+    let registered;
     if (eventId && !this.state.going) {
       attendanceRegistration(userId, eventId)
         .then((file) => {
-          if (file.length) {
+          registered = file;
+          return listUsersForEvent(eventId);
+        })
+        .then((users) => {
+          console.log('USERS.LENGTH', users.length);
+          if (registered.length) {
             this.setState({
-              going: true
+              going: true,
+              attendance: users.length
             });
           } else {
             this.setState({
@@ -90,6 +99,8 @@ class EventSingleView extends Component {
     if (this.state.event._id !== prevState.event._id) {
       this.checkUserRegistration();
     }
+    if (prevProps.going) {
+    }
   }
 
   deleteSpecificEvent = () => {
@@ -107,7 +118,7 @@ class EventSingleView extends Component {
     const event = this.state.event;
     const userId = this.props.userId;
     return (
-      <div className="eventSingle">
+      <div className='eventSingle'>
         <h1>{event.name}</h1>
         <em>{event.category}</em>
         <img src={event.image} alt={event.name} />
@@ -124,6 +135,9 @@ class EventSingleView extends Component {
         <p>{event.theme}</p>
         {(this.state.going && (
           <>
+            <p>
+              {this.state.attendance} / {event.capacity}
+            </p>
             <p>{event.description}</p>
             <button onClick={this.deleteUserRegistration}>I'm Out</button>
           </>

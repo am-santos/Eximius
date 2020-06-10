@@ -1,13 +1,14 @@
 .form {
-  height: 100vh;
+  // height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2.5em;
   form {
     width: 70vw;
-    background-color: rgba($color: #fff, $alpha: 0.1 );
-    padding: 4em 0;
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    padding: 3em 0;
     border-radius: 15px;
   }
   input {
@@ -24,16 +25,15 @@
     color: white;
     padding: 1em;
     font-size: 1.2em;
-    border: 1px solid #121212
+    border: 1px solid #121212;
   }
   ::placeholder {
-    color:white;
+    color: white;
     font-size: 1.3em;
     text-align: center;
     text-transform: lowercase;
     font-weight: bold;
   }
-  
 }
 @media (min-width: 841px) {
   .form {

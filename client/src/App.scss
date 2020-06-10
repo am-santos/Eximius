@@ -1,8 +1,6 @@
-$buttonColor:#A74EE1;
+$buttonColor: #a74ee1;
 $backgroundColor: #121212;
 $fontColor: #fff;
-
-
 
 .App {
   background-color: $backgroundColor;
@@ -10,7 +8,9 @@ $fontColor: #fff;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   color: white;
+  padding-bottom: 3em;
   button {
+    width: 7em;
     background-color: $buttonColor;
     border-radius: 15px;
     padding: 0.5em;

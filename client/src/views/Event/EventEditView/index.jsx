@@ -1,37 +1,39 @@
-import React, { Component } from "react";
-import "./style.scss";
+import React, { Component } from 'react';
+import './style.scss';
 
-import { singleEvent, editEvent } from "./../../../services/event";
+import { singleEvent, editEvent } from './../../../services/event';
+
+import NavBar from './../../../components/NavBar';
 
 class EditEventView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      category: "",
-      date: "",
-      location: "",
+      name: '',
+      category: '',
+      date: '',
+      location: '',
       image: null,
-      city: "",
-      description: "",
-      capacity: 0,
+      city: '',
+      description: '',
+      capacity: 0
     };
   }
 
   loadEvent = () => {
     singleEvent(this.props.match.params.id)
       .then((event) => {
-        console.log("event", event);
+        console.log('event', event);
         this.setState({
-          ...event,
+          ...event
         });
       })
-      .catch((error) => console.log("no event received", error));
+      .catch((error) => console.log('no event received', error));
   };
 
   handleInputChange = ({ target: { name, value } }) => {
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -39,7 +41,7 @@ class EditEventView extends Component {
     const { name } = event.target;
     const file = event.target.files[0];
     this.setState({
-      [name]: file,
+      [name]: file
     });
   };
 
@@ -54,7 +56,7 @@ class EditEventView extends Component {
     )
       .then((event) => {
         // Redirect user to profile page after successful edit
-        this.props.history.push("/");
+        this.props.history.push('/');
       })
       .catch((error) => {
         console.log(error);
@@ -68,7 +70,7 @@ class EditEventView extends Component {
   render() {
     return (
       <div className='form'>
-        <h1>Create Event</h1>
+        <h1>Edit Event</h1>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='name'></label>
           <input
@@ -133,8 +135,9 @@ class EditEventView extends Component {
             value={this.state.description}
             onChange={this.handleInputChange}
           />
-          <button>Edit Event</button>
+          <button>Edit</button>
         </form>
+        <NavBar />
       </div>
     );
   }

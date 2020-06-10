@@ -3,6 +3,8 @@ import './style.scss';
 
 import { createEvent } from './../../../services/event';
 
+import NavBar from './../../../components/NavBar';
+
 class CreateEventView extends Component {
   constructor(props) {
     super(props);
@@ -64,12 +66,7 @@ class CreateEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='image-input'></label>
-          <input 
-            id='image-input' 
-            name='image' 
-            type='file' 
-            onChange={this.handleFileInputChange} 
-          />
+          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
           <label htmlFor='Category-input'></label>
           <input
             id='category-input'
@@ -89,12 +86,7 @@ class CreateEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='date-input'></label>
-          <input 
-            id='date-input' 
-            name='date' 
-            type='date' 
-            onChange={this.handleInputChange} 
-          />
+          <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />
           <input
             id='time-input'
             name='time'
@@ -121,8 +113,9 @@ class CreateEventView extends Component {
             value={this.state.description}
             onChange={this.handleInputChange}
           />
-          <button>Create Event</button>
+          <button>Create</button>
         </form>
+        <NavBar />
       </div>
     );
   }

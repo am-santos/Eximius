@@ -23,13 +23,14 @@ import ProfileView from './views/Profile/ProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
 
 /* Contact Us */
-//import ContactUsView from './views/ContactUsView';
+import ContactUsView from './views/ContactUsView';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: null
+      user: null,
+      loaded: false
     };
   }
 
@@ -37,6 +38,9 @@ class App extends Component {
     loadAuthenticatedUser()
       .then((user) => {
         this.updateUser(user);
+        this.setState({
+          loaded: true
+        });
       })
       .catch((err) => {
         console.log('ERROR ON APP.JSX - COMPONENTDIDMOUNT, ERROR ->', err);
@@ -51,77 +55,68 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        <BrowserRouter>
-          {/* LogoBar or NavBar */}
-          <Link to='/authentication/log-in/'>Log-In</Link>
-          <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
+      <div className="App">
+        {this.state.loaded && (
+          <BrowserRouter>
+            {/* LogoBar or NavBar */}
+            <Link to="/authentication/log-in/">Log-In</Link>
+            <Link to="/authentication/sign-up/eximius-staff-laa">Sign-up</Link>
 
-          <Switch>
-            <Route
-              path='/'
-              exact
-              // updateUser={this.updateUser}
-              render={(props) => <HomeView {...props} user={this.state.user} />}
-            />
-            <Route
-              path='/authentication/log-in'
-              exact
-              render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
-            />
+            <Switch>
+                  <Route
+                    path="/authentication/log-in"
+                    exact
+                    render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
+                  />
 
-            <Route
-              path='/authentication/sign-up/:token'
-              exact
-              render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
-            />
+                  <Route
+                    path="/authentication/sign-up/:token"
+                    exact
+                    render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
+                  />
 
-            <Route
-              exact
-              path='/authentication/sign-up/eximius-staff-laa'
-              exat
-              render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
-            />
-            {this.state.user && (
-              <>
-                <Switch>
-                  {/* Authentication /> */}
                   <Route
                     exact
-                    path='/event/create'
+                    path="/authentication/sign-up/eximius-staff-laa"
+                    exat
+                    render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
+                  />
+
+                  <Route
+                    path="/"
+                    exact
+                    // updateUser={this.updateUser}
+                    render={(props) => <HomeView {...props} user={this.state.user} />}
+                  />
+
+                  <Route
+                    path="/event/create"
                     render={(props) => <CreateEventView {...props} user={this.state.user} />}
                   />
 
                   <Route
-                    exact
-                    path='/event/:id'
+                    path="/event/:id"
                     render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
                   />
-                  {/* <Route path='/my-events' component={MyEventListView} /> */}
 
-                  {/* Profile /> */}
                   <Route
-                    path='/profile/edit'
+                    path="/profile/edit"
                     updateUser={this.updateUser}
                     component={(props) => <EditProfileView {...props} user={this.state.user} />}
                   />
 
                   <Route
-                    path='/profile'
+                    path="/profile"
                     updateUser={this.updateUser}
                     render={(props) => <ProfileView {...props} user={this.state.user} />}
                   />
 
-                  {/* Events /> */}
-                  <Route path='/event/:id/edit' component={EventEditView} />
-                  {/* Contact Us /> */}
-                  {/* <Route path='/contact-us' component={ContactUsView} />
-                  <Route path='/contact-us/edit' component={EditProfileView} /> */}
-                </Switch>
-              </>
-            )}
-          </Switch>
-        </BrowserRouter>
+                  <Route path="/event/:id/edit" component={EventEditView} />
+
+                  <Route path="/contact-us" component={ContactUsView} />
+            </Switch>
+          </BrowserRouter>
+          )}
       </div>
     );
   }

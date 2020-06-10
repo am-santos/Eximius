@@ -32,10 +32,10 @@ const attendanceRegistration = (body) => {
 };
 
 // Create specific document
-const createRegistration = (body) => {
+const createRegistration = (userId, eventId) => {
   // post from /create/:userId/:eventId
   return baseAuthenticationService
-    .get(`/create/${body.userId}/${body.eventId}`)
+    .get(`/create/${userId}/${eventId}`)
     .then((response) => Promise.resolve(response.data.users))
     .catch((error) => Promise.reject(error));
 };

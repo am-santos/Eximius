@@ -4,6 +4,8 @@ import './index.scss';
 
 import { singleEvent } from './../../../services/event';
 
+import { createRegistration } from './../../../services/attendance';
+
 import NavBar from './../../../components/NavBar';
 import ClockCountDown from './../../../components/ClockCountDown';
 
@@ -14,12 +16,11 @@ class EventSingleView extends Component {
       event: '',
       going: false
     };
-  }
+  } 
 
   loadEvent = () => {
     singleEvent(this.props.match.params.id)
       .then((event) => {
-        console.log('event', event)
         this.setState({
           event
         });
@@ -33,13 +34,18 @@ class EventSingleView extends Component {
     });
   };
 
+  registerUser = () => {
+    console.log(this.props)
+    createRegistration()
+  }
+
   componentDidMount() {
     this.loadEvent();
   }
 
   render() {
+    console.log('user', this.props.userId)
     const event = this.state.event;
-    console.log(this.state.event);
     return (
       <div className="eventSingle">
         <h1>{event.name}</h1>
@@ -53,7 +59,6 @@ class EventSingleView extends Component {
           <div>
             <p>Time Left</p>
             <ClockCountDown date={event.date} />
-            <p>24:00:00</p>
           </div>
         </div>
         <p>{event.theme}</p>

@@ -64,6 +64,8 @@ class App extends Component {
               updateUser={this.updateUser}
               render={(props) => <HomeView {...props} user={this.state.user} />}
             />
+            {this.state.user && (
+              <>
             {/* Authentication /> */}
             <Route
               path='/authentication/log-in'
@@ -88,7 +90,9 @@ class App extends Component {
               exact
               render={(props) => <CreateEventView {...props} user={this.state.user} />}
             />
-            <Route path='/event/:id' exact component={EventSingleView} />
+            <Route path='/event/:id' exact 
+            render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
+            />
             {/* <Route path='/my-events' component={MyEventListView} /> */}
 
             {/* Profile /> */}
@@ -109,6 +113,8 @@ class App extends Component {
             {/* Contact Us /> */}
             {/* <Route path='/contact-us' component={ContactUsView} />
             <Route path='/contact-us/edit' component={EditProfileView} /> */}
+            </>
+            )}
           </Switch>
         </BrowserRouter>
       </div>

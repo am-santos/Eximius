@@ -52,7 +52,7 @@ class EventSingleView extends Component {
           </div>
           <div>
             <p>Time Left</p>
-            <ClockCountDown hours={event.time} day={event.day} />
+            <ClockCountDown date={event.date} />
             <p>24:00:00</p>
           </div>
         </div>

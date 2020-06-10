@@ -19,6 +19,7 @@ class EventSingleView extends Component {
   loadEvent = () => {
     singleEvent(this.props.match.params.id)
       .then((event) => {
+        console.log('event', event)
         this.setState({
           event
         });

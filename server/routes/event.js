@@ -28,7 +28,10 @@ const Event = require('../models/event');
 const User = require('../models/user');
 
 EventRouter.get('/list', (req, res, next) => {
-  Event.find()
+  const now = Date.now();
+  ('2000-01-01,01:01');
+
+  Event.find({ date: { gt: now } })
     .then((events) => {
       res.json({
         event: events
@@ -41,7 +44,7 @@ EventRouter.get('/list', (req, res, next) => {
 
 EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
   const { name, category, description, date, city, capacity } = req.body;
-  console.log(req.body)
+  console.log(req.body);
   const userId = req.user._id;
   let image;
   if (req.file.path) image = req.file.path;

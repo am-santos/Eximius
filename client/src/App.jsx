@@ -9,18 +9,18 @@ import { loadAuthenticatedUser } from './services/authentication';
 
 /* Events */
 import HomeView from './views/HomeView';
-import EventSingleView from './views/EventSingleView';
+import EventSingleView from './views/Event/EventSingleView';
 //import MyEventListView from './views/MyEventListView';
-import CreateEventView from './views/CreateEventView';
-import EventEditView from './views/EventEditView';
+import CreateEventView from './views/Event/CreateEventView';
+import EventEditView from './views/Event/EventEditView';
 
 /* Authentication */
 import LogInView from './views/Authentication/LogInView';
 import SignUpView from './views/Authentication/SignUpView';
 
 /* Profile */
-import ProfileView from './views/ProfileView';
-import EditProfileView from './views/EditProfileView';
+import ProfileView from './views/Profile/ProfileView';
+import EditProfileView from './views/Profile/EditProfileView';
 
 /* Contact Us */
 //import ContactUsView from './views/ContactUsView';

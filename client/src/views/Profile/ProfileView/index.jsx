@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import NavBar from './../../components/NavBar';
+import NavBar from './../../../components/NavBar';
 
 const ProfileView = (props) => {
   const user = props.user;

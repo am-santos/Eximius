@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 
-import { createEvent } from './../../services/event';
+import { createEvent } from './../../../services/event';
 
 class CreateEventView extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import editUserProfile from './../../services/user';
-import { loadAuthenticatedUser } from './../../services/authentication';
+import editUserProfile from './../../../services/user';
+import { loadAuthenticatedUser } from './../../../services/authentication';
 
 class EditProfileView extends Component {
   constructor(props) {

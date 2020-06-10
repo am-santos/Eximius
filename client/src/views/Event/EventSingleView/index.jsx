@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import './index.scss';
 
-import { singleEvent } from './../../services/event';
+import { singleEvent } from './../../../services/event';
 
-import NavBar from './../../components/NavBar';
-import ClockCountDown from './../../components/ClockCountDown';
+import NavBar from './../../../components/NavBar';
+import ClockCountDown from './../../../components/ClockCountDown';
 
 class EventSingleView extends Component {
   constructor(props) {

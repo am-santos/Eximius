@@ -99,10 +99,12 @@ EventRouter.post('/:id/edit', uploader.single('image'), (req, res, next) => {
 });
 
 EventRouter.post('/:id/delete', (req, res, next) => {
-  const eventId = req.params.eventId;
+  const eventId = req.params.id;
+  console.log(eventId);
 
   Event.findByIdAndDelete(eventId)
     .then((event) => {
+      res.json({event})
       console.log('Delete event on server side', event);
     })
     .catch((error) => {

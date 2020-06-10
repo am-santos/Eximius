@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import './index.scss';
 
-import { singleEvent } from './../../../services/event';
+import { singleEvent, deleteEvent } from './../../../services/event';
 
 import {
   createRegistration,
@@ -39,28 +39,26 @@ class EventSingleView extends Component {
     });
   };
 
-
   checkUserRegistration = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
     if (eventId && !this.state.going) {
-    attendanceRegistration(userId, eventId)
-      .then(file => {
-        if(file.length) {
-          this.setState({
-            going: true
-          })
-        } else {
-          this.setState({
-            going: false
-          })
-        }
-      })
-      .catch(err => console.log(err))
-    }  
-  }
-  
-  
+      attendanceRegistration(userId, eventId)
+        .then((file) => {
+          if (file.length) {
+            this.setState({
+              going: true
+            });
+          } else {
+            this.setState({
+              going: false
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   registerUser = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
@@ -74,11 +72,11 @@ class EventSingleView extends Component {
   deleteUserRegistration = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
-    console.log(eventId)
+    console.log(eventId);
     deleteRegistration(userId, eventId)
       .then((register) => {
-        console.log('am I going',this.state.going)
-        console.log('i am the register', register)
+        console.log('am I going', this.state.going);
+        console.log('i am the register', register);
         this.changeGoing();
       })
       .catch((error) => console.log('user not registered', error));
@@ -94,10 +92,20 @@ class EventSingleView extends Component {
     }
   }
 
+  deleteSpecificEvent = () => {
+    const eventId = this.state.event._id;
+
+    deleteEvent(eventId)
+      .then((event) => {
+        console.log('this was deleted', event);
+        this.props.history.push('/');
+      })
+      .catch((err) => console.log('not deleted'));
+  };
+
   render() {
     const event = this.state.event;
     const userId = this.props.userId;
-    console.log(event)
     return (
       <div className="eventSingle">
         <h1>{event.name}</h1>
@@ -120,7 +128,12 @@ class EventSingleView extends Component {
             <button onClick={this.deleteUserRegistration}>I'm Out</button>
           </>
         )) || <button onClick={this.registerUser}>I'm in</button>}
-        {(userId === event.userId) && <Link to={`/event/${event._id}/edit`}>Edit</Link>}
+        {userId === event.userId && (
+          <>
+            <Link to={`/event/${event._id}/edit`}>Edit</Link>
+            <button onClick={this.deleteSpecificEvent}>Delete</button>
+          </>
+        )}
         <NavBar />
       </div>
     );

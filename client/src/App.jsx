@@ -61,63 +61,61 @@ class App extends Component {
             <Route
               path='/'
               exact
-              updateUser={this.updateUser}
+              // updateUser={this.updateUser}
               render={(props) => <HomeView {...props} user={this.state.user} />}
             />
             <Route
-              exact
               path='/authentication/log-in'
+              exact
               render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
             />
-            {/* <Route path='/authentication/sign-up' exact component={SignUpView} /> */}
 
             <Route
-              exact
               path='/authentication/sign-up/:token'
+              exact
               render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
             />
 
             <Route
               exact
               path='/authentication/sign-up/eximius-staff-laa'
+              exat
               render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
             />
             {this.state.user && (
               <>
                 {/* Authentication /> */}
-                <Switch>
-                  <Route
-                    exact
-                    path='/event/create'
-                    render={(props) => <CreateEventView {...props} user={this.state.user} />}
-                  />
+                <Route
+                  exact
+                  path='/event/create'
+                  render={(props) => <CreateEventView {...props} user={this.state.user} />}
+                />
 
-                  <Route
-                    exact
-                    path='/event/:id'
-                    render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
-                  />
-                  {/* <Route path='/my-events' component={MyEventListView} /> */}
+                <Route
+                  exact
+                  path='/event/:id'
+                  render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
+                />
+                {/* <Route path='/my-events' component={MyEventListView} /> */}
 
-                  {/* Profile /> */}
-                  <Route
-                    path='/profile/edit'
-                    updateUser={this.updateUser}
-                    component={(props) => <EditProfileView {...props} user={this.state.user} />}
-                  />
+                {/* Profile /> */}
+                <Route
+                  path='/profile/edit'
+                  updateUser={this.updateUser}
+                  component={(props) => <EditProfileView {...props} user={this.state.user} />}
+                />
 
-                  <Route
-                    path='/profile'
-                    updateUser={this.updateUser}
-                    render={(props) => <ProfileView {...props} user={this.state.user} />}
-                  />
+                <Route
+                  path='/profile'
+                  updateUser={this.updateUser}
+                  render={(props) => <ProfileView {...props} user={this.state.user} />}
+                />
 
-                  {/* Events /> */}
-                  <Route path='/event/:id/edit' component={EventEditView} />
-                  {/* Contact Us /> */}
-                  {/* <Route path='/contact-us' component={ContactUsView} />
+                {/* Events /> */}
+                <Route path='/event/:id/edit' component={EventEditView} />
+                {/* Contact Us /> */}
+                {/* <Route path='/contact-us' component={ContactUsView} />
                   <Route path='/contact-us/edit' component={EditProfileView} /> */}
-                </Switch>
               </>
             )}
           </Switch>

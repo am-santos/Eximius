@@ -9,11 +9,13 @@ import EventList from './../../components/EventList';
 
 import NavBar from './../../components/NavBar';
 
+
+
 class HomeView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
     };
   }
 
@@ -32,6 +34,7 @@ class HomeView extends Component {
   }
 
   render() {
+    console.log(this.props.updateUser);
     const user = this.props.user;
     return (
       <div className='dashboard'>

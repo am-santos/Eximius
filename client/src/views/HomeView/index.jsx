@@ -9,11 +9,13 @@ import EventList from './../../components/EventList';
 
 import NavBar from './../../components/NavBar'
 
+import LogoBar from './../../components/LogoBar'
+
 class HomeView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
     };
   }
 
@@ -32,9 +34,11 @@ class HomeView extends Component {
   }
 
   render() {
+    console.log(this.props);
     const user = this.props.user;
     return (
       <div>
+        <LogoBar updateUser={this.props.updateUser} />
         {(user && (
           <>
             {(!this.state.events && (

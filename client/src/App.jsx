@@ -43,12 +43,6 @@ class App extends Component {
       });
   }
 
-  updateUser = (user) => {
-    this.setState({
-      user
-    });
-  };
-
   render() {
     return (
       <div className='App'>
@@ -62,7 +56,7 @@ class App extends Component {
               path='/'
               exact
               updateUser={this.updateUser}
-              render={(props) => <HomeView {...props} user={this.state.user} />}
+              render={(props) => <HomeView {...props} user={this.state.user} updateUser={() => this.updateUser()}/>}
             />
             {this.state.user && (
               <>

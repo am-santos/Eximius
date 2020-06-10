@@ -58,7 +58,10 @@ class App extends Component {
           <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
 
           <Switch>
-            <Route path='/' exact updateUser={this.updateUser}
+            <Route
+              path='/'
+              exact
+              updateUser={this.updateUser}
               render={(props) => <HomeView {...props} user={this.state.user} />}
             />
             {/* Authentication /> */}
@@ -79,9 +82,14 @@ class App extends Component {
               render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
             />
 
-            <Route exact path='/event/create' exact render={(props) => <CreateEventView {...props} user={this.state.user} />}/>
+            <Route
+              exact
+              path='/event/create'
+              exact
+              render={(props) => <CreateEventView {...props} user={this.state.user} />}
+            />
             <Route path='/event/:id' exact component={EventSingleView} />
-           {/* <Route path='/my-events' component={MyEventListView} /> */}
+            {/* <Route path='/my-events' component={MyEventListView} /> */}
 
             {/* Profile /> */}
             <Route

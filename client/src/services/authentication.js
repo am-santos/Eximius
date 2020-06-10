@@ -33,16 +33,16 @@ const logIn = (body) => {
     });
 };
 
-/* const signOut = () => {
+const signOut = () => {
   return baseAuthenticationService
     .post('/sign-out')
-    .then(response => {
+    .then((response) => {
       return Promise.resolve();
     })
-    .catch(error => {
+    .catch((error) => {
       return Promise.reject(error);
     });
-}; */
+};
 
 const loadAuthenticatedUser = () => {
   return baseAuthenticationService
@@ -55,4 +55,4 @@ const loadAuthenticatedUser = () => {
     });
 };
 
-export { signUp, logIn, loadAuthenticatedUser };
+export { signUp, logIn, loadAuthenticatedUser, signOut };

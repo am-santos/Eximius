@@ -23,6 +23,7 @@ const createEvent = (body) => {
   form.append('theme', body.theme);
   form.append('description', body.description);
   form.append('category', body.category);
+  form.append('capacity', body.capacity);
 
   return baseEventService
     .post('/create', form)
@@ -38,13 +39,13 @@ const createEvent = (body) => {
 
 const singleEvent = (id) => {
   return baseEventService
-  .get(`/${id}`)
-  .then(response => {
-    console.log('single event',response)
-    const event = response.data.event
-    return Promise.resolve(event)
-  })
-  .catch(error => Promise.reject(error))
-}
+    .get(`/${id}`)
+    .then((response) => {
+      console.log('single event', response);
+      const event = response.data.event;
+      return Promise.resolve(event);
+    })
+    .catch((error) => Promise.reject(error));
+};
 
 export { listEvents, createEvent, singleEvent };

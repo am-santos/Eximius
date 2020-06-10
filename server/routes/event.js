@@ -40,7 +40,7 @@ EventRouter.get('/list', (req, res, next) => {
 });
 
 EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
-  const { name, category, limit, description, date, capacity } = req.body;
+  const { name, category, limit, description, date, city, capacity } = req.body;
   const userId = req.user._id;
   let image;
   if (req.file.path) image = req.file.path;
@@ -56,6 +56,7 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
           limit,
           description,
           date,
+          city,
           capacity
         });
       } else {

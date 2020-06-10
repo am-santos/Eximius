@@ -20,10 +20,11 @@ const createEvent = (body) => {
   form.append('name', body.name);
   form.append('image', body.image);
   form.append('date', body.date);
-  form.append('theme', body.theme);
   form.append('description', body.description);
   form.append('category', body.category);
   form.append('capacity', body.capacity);
+  form.append('city', body.city);
+
 
   return baseEventService
     .post('/create', form)

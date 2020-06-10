@@ -28,11 +28,18 @@ const Event = require('../models/event');
 const User = require('../models/user');
 
 EventRouter.get('/list', (req, res, next) => {
-  // const now = Date.now();
-  // ('2000-01-01,01:01');
+  const now = new Date();
 
-  // Event.find({ date: { gt: now } })
-  Event.find()
+  let month = now.getMonth() + 1;
+  let day = now.getDate();
+  if (month < 10) month = '0' + month;
+  if (day < 10) day = '0' + day;
+  // '2000-01-01,01:01'
+  const strNow =
+    now.getFullYear() + '-' + month + '-' + day + ',' + now.getHours() + ':' + now.getMinutes();
+  console.log('time now in string', strNow, typeof strNow);
+  Event.find({ date: { $gte: strNow } })
+    .sort({ date: 1 })
     .then((events) => {
       res.json({
         event: events

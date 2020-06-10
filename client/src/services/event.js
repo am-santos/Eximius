@@ -15,6 +15,7 @@ const listEvents = () => {
 };
 
 const createEvent = (body) => {
+  console.log('i got here')
   console.log(body.date);
   const form = new FormData();
   form.append("name", body.name);

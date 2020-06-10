@@ -85,7 +85,6 @@ class App extends Component {
                   <Route
                     path="/"
                     exact
-                    // updateUser={this.updateUser}
                     render={(props) => <HomeView {...props} user={this.state.user} />}
                   />
 
@@ -96,6 +95,7 @@ class App extends Component {
 
                   <Route
                     path="/event/:id"
+                    exact
                     render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
                   />
 
@@ -111,7 +111,7 @@ class App extends Component {
                     render={(props) => <ProfileView {...props} user={this.state.user} />}
                   />
 
-                  <Route path="/event/:id/edit" component={EventEditView} />
+                  <Route path="/event/:id/edit" exact component={EventEditView} />
 
                   <Route path="/contact-us" component={ContactUsView} />
             </Switch>

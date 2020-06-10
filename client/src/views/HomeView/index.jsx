@@ -34,7 +34,6 @@ class HomeView extends Component {
   }
 
   render() {
-    console.log(this.props.updateUser);
     const user = this.props.user;
     return (
       <div className='dashboard'>

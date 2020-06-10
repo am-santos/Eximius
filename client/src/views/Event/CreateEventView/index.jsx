@@ -22,7 +22,6 @@ class CreateEventView extends Component {
   }
 
   handleInputChange = ({ target: { name, value } }) => {
-    console.log(name, value, typeof value);
     this.setState({
       [name]: value
     });

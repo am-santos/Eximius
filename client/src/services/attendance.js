@@ -23,10 +23,10 @@ const listEventsForUser = (id) => {
 };
 
 // Find specific registration
-const attendanceRegistration = (body) => {
+const attendanceRegistration = (userId, eventId) => {
   // get from /:userId/:eventId
   return baseAuthenticationService
-    .get(`/${body.userId}/${body.eventId}`)
+    .get(`/${userId}/${eventId}`)
     .then((response) => Promise.resolve(response.data.users))
     .catch((error) => Promise.reject(error));
 };
@@ -41,11 +41,11 @@ const createRegistration = (userId, eventId) => {
 };
 
 // POST Delete specific document
-const deleteRegistration = (body) => {
+const deleteRegistration = (userId, eventId) => {
   // get from /delete/:userId/:eventId
   return baseAuthenticationService
-    .post(`/delete/${body.userId}/${body.eventId}`)
-    .then((response) => Promise.resolve(response.data.users))
+    .post(`/delete/${userId}/${eventId}`)
+    .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error));
 };
 

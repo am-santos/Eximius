@@ -33,7 +33,6 @@ class HomeView extends Component {
 
   render() {
     const user = this.props.user;
-    console.log(this.state.events);
     return (
       <div>
         {(user && (

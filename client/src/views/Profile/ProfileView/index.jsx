@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import NavBar from './../../../components/NavBar';
 
+import './index.scss';
+
 const ProfileView = (props) => {
   const user = props.user;
   return (
-    <div>
+    <div className="profileCard">
       {user && (
         <>
           <h1>Profile View With User</h1>
@@ -30,9 +32,9 @@ const ProfileView = (props) => {
               {/* ADD LETTER IMAGE */}
             </>
           )}
+      <NavBar />
         </>
       )}
-      <NavBar />
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import './index.scss'
+
 import { sendInvitation } from './../../../services/user';
+import LogoBar from '../../../components/LogoBar';
 
 class InvitationView extends Component {
   constructor(props) {
@@ -33,7 +36,9 @@ class InvitationView extends Component {
 
   render() {
     return (
-      <div className='form'>
+      <>
+      <LogoBar updateUser={this.props.updateUser}/>
+      <div className='form message'>
         <h1>Invite a Friend</h1>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='email-input'></label>
@@ -57,6 +62,7 @@ class InvitationView extends Component {
           <button>Send</button>
         </form>
       </div>
+      </>
     );
   }
 }

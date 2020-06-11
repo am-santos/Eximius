@@ -70,15 +70,6 @@ class EditProfileView extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
               />
-              {/* <label htmlFor='password-input'></label>
-              <input
-                id='password-input'
-                name='password'
-                type='password'
-                placeholder='Password'
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              /> */}
 
               <button>Update</button>
             </form>

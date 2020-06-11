@@ -21,7 +21,7 @@ const ProfileView = (props) => {
             {/* <img src={user.photo} alt={user.username} /> */}
             <h2>{user.username}</h2>
             <h3>{user.email}</h3>
-            <Link to='/profile/edit'>Edit Profile</Link>
+            <Link to='/profile/edit' className="edit">Edit Profile</Link>
             {(user.invitationToken.length && (
               <div className='invites'>
                 <h6>Invites Left:</h6>

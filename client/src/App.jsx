@@ -21,6 +21,7 @@ import SignUpView from './views/Authentication/SignUpView';
 /* Profile */
 import ProfileView from './views/Profile/ProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
+import InvitationView from './views/Profile/InvitationView';
 
 /* Contact Us */
 import ContactUsView from './views/ContactUsView';
@@ -105,6 +106,13 @@ class App extends Component {
                 path='/profile/edit'
                 updateUser={this.updateUser}
                 component={(props) => <EditProfileView {...props} user={this.state.user} />}
+              />
+
+              <Route
+                path='/profile/invite'
+                component={(props) => (
+                  <InvitationView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
               />
 
               <Route

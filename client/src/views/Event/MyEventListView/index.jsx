@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { listEventsForUser } from './../../../services/attendance';
-//import EventList from './../../../components/EventList';
+import EventList from './../../../components/EventList';
 
 class MyEventListView extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class MyEventListView extends Component {
   }
 
   loadEvent = () => {
-    console.log(this.props.userId, 'this is the user id')
+    console.log(this.props.userId, 'this is the user id');
     listEventsForUser(this.props.userId)
       .then((events) => {
         console.log(events, 'yours events');
@@ -28,16 +28,20 @@ class MyEventListView extends Component {
   }
 
   render() {
-    const events = this.state.events;
+    // const events = this.state.events;
     //events.map(event => console.log(event, 'inside of the map'))
     return (
-      <div>
-        Hello World
-        {/* {events.map((event) => {
-          console.log('single event', event.eventId)
-          // return <EventList event={event.} />;
-        })} */}
-      </div>
+      <>
+        {this.state.events.length && (
+          <div>
+            Hello World
+            {this.state.events.map((event) => {
+              // console.log('single event', event.eventId);
+              return <EventList event={event} />;
+            })}
+          </div>
+        )}
+      </>
     );
   }
 }

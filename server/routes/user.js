@@ -13,17 +13,10 @@ UserRouter.get('/profile', routeGuard, (req, res) => {
   });
 });
 
-UserRouter.get('/user', (req, res, next) => {
-  User.find()
-    .then((users) => res.json({ users }))
-    .catch((error) => next(error));
-});
-
-UserRouter.post('/user/:id/edit', (req, res, next) => {
-  const userId = req.params.id;
-
-  User.findByIdAndUpdate(userId, { ...req.body })
-    .then((user) => console.log(user))
+UserRouter.post('/user/profile/edit', routeGuard, (req, res, next) => {
+  const userId = req.user._id;
+  User.findByIdAndUpdate(userId, { ...req.body }, {new: true})
+    .then((user) => res.json({user}))
     .catch((error) => next(error));
 });
 

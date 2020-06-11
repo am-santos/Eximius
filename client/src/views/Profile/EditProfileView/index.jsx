@@ -9,7 +9,6 @@ class EditProfileView extends Component {
     this.state = {
       email: '',
       username: '',
-      password: ''
     };
   }
 
@@ -27,6 +26,7 @@ class EditProfileView extends Component {
       });
   }
 
+
   handleInputChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value
@@ -35,11 +35,10 @@ class EditProfileView extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const { email, username, password } = this.state;
+    const { email, username } = this.state;
 
-    editUserProfile({ email, username, password })
+    editUserProfile({ email, username })
       .then((user) => {
-        console.log(user);
         this.props.updateUser(user);
         // Redirect user to profile page after successful edit
         this.props.history.push('/profile');
@@ -49,6 +48,7 @@ class EditProfileView extends Component {
       });
   };
 
+  
   render() {
     return (
       <div className='form'>
@@ -71,7 +71,7 @@ class EditProfileView extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
               />
-              <label htmlFor='password-input'></label>
+              {/* <label htmlFor='password-input'></label>
               <input
                 id='password-input'
                 name='password'
@@ -79,7 +79,7 @@ class EditProfileView extends Component {
                 placeholder='Password'
                 value={this.state.password}
                 onChange={this.handleInputChange}
-              />
+              /> */}
 
               <button>Update</button>
             </form>

@@ -103,14 +103,12 @@ class App extends Component {
 
               <Route
                 path='/profile/edit'
-                updateUser={this.updateUser}
-                component={(props) => <EditProfileView {...props} user={this.state.user} />}
+                component={(props) => <EditProfileView {...props} user={this.state.user} updateUser={this.updateUser} />}
               />
 
               <Route
                 path='/profile'
-                updateUser={this.updateUser}
-                render={(props) => <ProfileView {...props} user={this.state.user} />}
+                render={(props) => <ProfileView {...props} user={this.state.user} updateUser={this.updateUser}/>}
               />
 
               <Route path='/event/:id/edit' exact component={EventEditView} />

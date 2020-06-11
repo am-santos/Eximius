@@ -9,13 +9,11 @@ import EventList from './../../components/EventList';
 
 import NavBar from './../../components/NavBar';
 
-
-
 class HomeView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
+      events: []
     };
   }
 

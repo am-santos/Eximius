@@ -99,7 +99,7 @@ EventRouter.post('/:id/edit', uploader.single('image'), (req, res, next) => {
   console.log('THIS IS THE req.body.image ->', req.body.image);
   Event.findByIdAndUpdate(
     eventId,
-    { name, category, description, date, city, capacity },
+    { name, category, description, date, image, city, capacity },
     { new: true }
   )
     .then((event) => {

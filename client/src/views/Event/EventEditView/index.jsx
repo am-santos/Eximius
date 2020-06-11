@@ -90,13 +90,7 @@ class EditEventView extends Component {
             onChange={this.handleInputChange}
           />
           <label htmlFor='image-input'></label>
-          <input
-            id='image-input'
-            required
-            name='image'
-            type='file'
-            onChange={this.handleFileInputChange}
-          />
+          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
           <label htmlFor='category-input'></label>
           <input
             id='category-input'

@@ -122,17 +122,16 @@ class EventSingleView extends Component {
         <h1>{event.name}</h1>
         <em>{event.category}</em>
         <img src={event.image} alt={event.name} />
-        <div>
-          <div>
-            <p>Location</p>
-            <p>{event.city}</p>
+        <div className="location-clock">
+          <div className="location">
+            <p>Location:</p>
+            <em>{event.city}</em>
           </div>
-          <div>
-            <p>Time Left</p>
+          <div className="time-container">
+            <p>Time Left:</p>
             <ClockCountDown date={event.date} />
           </div>
         </div>
-        <p>{event.theme}</p>
         {(this.state.going && (
           <>
             <p>

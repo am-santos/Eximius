@@ -43,7 +43,7 @@ class HomeView extends Component {
               </>
             )) || (
               <>
-                <h1>Whats coming up?</h1>
+                <h1>Whats coming?</h1>
                 {this.state.events.map((event) => {
                   return <EventList key={event._id} event={event} />;
                 })}

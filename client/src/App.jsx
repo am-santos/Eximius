@@ -49,11 +49,13 @@ class App extends Component {
   }
 
   updateUser = (user) => {
+    console.log('i am being called')
     this.setState({
       user
     });
   };
 
+<<<<<<< HEAD
   /* componentDidUpdate(prevProps, prevState) {
     if (prevState.user !== this.state.user) {
       loadAuthenticatedUser()
@@ -63,15 +65,14 @@ class App extends Component {
         .catch((error) => console.log(error));
     }
   } */
+=======
+>>>>>>> 9e5d6227bf7524984dd0844d6a80685d73c0ba2f
 
   render() {
     return (
       <div className='App'>
         {this.state.loaded && (
           <BrowserRouter>
-            {/* LogoBar or NavBar */}
-            <Link to='/authentication/log-in/'>Log-In</Link>
-            <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
 
             <Switch>
               <Route
@@ -109,7 +110,7 @@ class App extends Component {
               <Route
                 path='/event/:id'
                 exact
-                render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
+                render={(props) => <EventSingleView {...props} userId={this.state.user._id} updateUser={this.updateUser} />}
               />
 
               <Route

@@ -13,7 +13,7 @@ const ProfileView = (props) => {
       {user && (
         <>
           <LogoBar updateUser={props.updateUser} />
-          <h1>Profile View With User</h1>
+          <h1>Your Profile</h1>
           {/* <img src={user.photo} alt={user.username} /> */}
           <h2>{user.username}</h2>
           <h3>{user.username}</h3>

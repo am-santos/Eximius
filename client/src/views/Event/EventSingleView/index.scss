@@ -1,8 +1,85 @@
 .eventSingle {
-  height: 100vh;
-  
+  //height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 1.5em;
+    margin: 0 auto 1em;
+
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 29px;
+    letter-spacing: 0.3em;
+  }
   img {
     max-width: 100%;
-    width: 5em;
+    width: 65vw;
+    border-radius: 10px;
+    margin-top: 1em;
   }
+
+  .location-clock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .location {
+    margin-right: 5em;
+    margin-top: 1em;
+    em {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    p {
+      font-size: 1em;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .time-container {
+    margin-top: 1em;
+    p {
+      font-size: 1em;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+    }
+    h3 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+  }
+}
+
+.eventChangers {
+  font-size: 1em;
+  font-weight: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top:0.5em;
+  button {
+    background-color: #121212;
+    border:0;
+    padding: 0;
+    width: auto;
+    font-size: inherit;
+    font-weight: 0;
+    margin-left: 5em;
+  }
+  a {
+    margin-right: 5em;
+    text-decoration: none;
+    color: white;
+    font-weight: 0;
+  }
+}
+
+.attendanceButtons {
+  border: 1px #121212 solid;
 }

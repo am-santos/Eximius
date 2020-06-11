@@ -53,7 +53,7 @@ class CreateEventView extends Component {
 
   render() {
     return (
-      <div className='form'>
+      <div className='form createEvent'>
         <h1>Create Event</h1>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='name-input'></label>
@@ -76,15 +76,17 @@ class CreateEventView extends Component {
             value={this.state.category}
             onChange={this.handleInputChange}
           />
-          <label htmlFor='capacity-input'></label>
-          <input
-            id='capacity-input'
-            name='capacity'
-            type='number'
-            placeholder='Capacity'
-            value={this.state.capacity}
-            onChange={this.handleInputChange}
-          />
+          <div className="capacity">
+            <label htmlFor='capacity-input'><small>Capacity</small></label>
+            <input
+              id='capacity-input'
+              name='capacity'
+              type='number'
+              placeholder='Capacity'
+              value={this.state.capacity}
+              onChange={this.handleInputChange}
+            />
+          </div>
           <section className='hourDate'>
             <label htmlFor='date-input'></label>
             <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />

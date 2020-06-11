@@ -14,6 +14,7 @@ import {
 
 import NavBar from './../../../components/NavBar';
 import ClockCountDown from './../../../components/ClockCountDown';
+import LogoBar from './../../../components/LogoBar';
 
 class EventSingleView extends Component {
   constructor(props) {
@@ -118,38 +119,40 @@ class EventSingleView extends Component {
     const event = this.state.event;
     const userId = this.props.userId;
     return (
-      <div className='eventSingle'>
-        <h1>{event.name}</h1>
-        <em>{event.category}</em>
-        <img src={event.image} alt={event.name} />
-        <div>
-          <div>
-            <p>Location</p>
-            <p>{event.city}</p>
+      <>
+        <LogoBar updateUser={this.props.updateUser} />
+        <div className="eventSingle">
+          <h1>{event.name}</h1>
+          <em>{event.category}</em>
+          <img src={event.image} alt={event.name} />
+          {userId === event.userId && (
+            <section className="eventChangers">
+              <Link to={`/event/${event._id}/edit`}>Edit</Link>
+              <button onClick={this.deleteSpecificEvent}>Delete</button>
+            </section>
+          )}
+          <div className="location-clock">
+            <div className="location">
+              <p>Location:</p>
+              <em>{event.city}</em>
+            </div>
+            <div className="time-container">
+              <p>Time Left:</p>
+              <ClockCountDown date={event.date} />
+            </div>
           </div>
-          <div>
-            <p>Time Left</p>
-            <ClockCountDown date={event.date} />
-          </div>
+          {(this.state.going && (
+            <div className="attendanceButtons">
+              <p>
+                {this.state.attendance} / {event.capacity}
+              </p>
+              <p>{event.description}</p>
+              <button onClick={this.deleteUserRegistration}>I'm Out</button>
+            </div>
+          )) || <button onClick={this.registerUser}>I'm in</button>}
+          <NavBar />
         </div>
-        <p>{event.theme}</p>
-        {(this.state.going && (
-          <>
-            <p>
-              {this.state.attendance} / {event.capacity}
-            </p>
-            <p>{event.description}</p>
-            <button onClick={this.deleteUserRegistration}>I'm Out</button>
-          </>
-        )) || <button onClick={this.registerUser}>I'm in</button>}
-        {userId === event.userId && (
-          <>
-            <Link to={`/event/${event._id}/edit`}>Edit</Link>
-            <button onClick={this.deleteSpecificEvent}>Delete</button>
-          </>
-        )}
-        <NavBar />
-      </div>
+      </>
     );
   }
 }

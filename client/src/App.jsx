@@ -21,6 +21,7 @@ import SignUpView from './views/Authentication/SignUpView';
 /* Profile */
 import ProfileView from './views/Profile/ProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
+import InvitationView from './views/Profile/InvitationView';
 
 /* Contact Us */
 import ContactUsView from './views/ContactUsView';
@@ -48,10 +49,12 @@ class App extends Component {
   }
 
   updateUser = (user) => {
+    console.log('i am being called')
     this.setState({
       user
     });
   };
+
 
   render() {
     return (
@@ -103,14 +106,23 @@ class App extends Component {
 
               <Route
                 path='/profile/edit'
-                updateUser={this.updateUser}
-                component={(props) => <EditProfileView {...props} user={this.state.user} />}
+                component={(props) => (
+                  <EditProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
+              />
+
+              <Route
+                path='/profile/invite'
+                component={(props) => (
+                  <InvitationView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
               />
 
               <Route
                 path='/profile'
-                updateUser={this.updateUser}
-                render={(props) => <ProfileView {...props} user={this.state.user} />}
+                render={(props) => (
+                  <ProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
               />
 
               <Route path='/event/:id/edit' exact component={EventEditView} />

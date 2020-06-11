@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import NavBar from './../../../components/NavBar';
+import LogoBar from './../../../components/LogoBar';
 
 import './index.scss';
 
@@ -12,6 +13,7 @@ const ProfileView = (props) => {
       {user && (
         <>
           <h1>Your Profile</h1>
+          <LogoBar updateUser={props.updateUser} />
           {/* <img src={user.photo} alt={user.username} /> */}
           <h2>{user.username}</h2>
           <h3>{user.username}</h3>

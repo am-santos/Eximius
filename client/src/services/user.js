@@ -1,15 +1,22 @@
 import axios from 'axios';
 
-const baseAuthenticationService = axios.create({
+const baseUserService = axios.create({
   baseURL: '/api/user'
 });
 
 const editUserProfile = (body) => {
   console.log('BODY OF EDIT USER PROFILE ->', body);
-  return baseAuthenticationService
-    .post(`/${body.id}/edit`, body)
+  return baseUserService
+    .post(`/profile/edit`, body)
     .then((response) => Promise.resolve(response.data.user))
     .catch((error) => Promise.reject(error));
 };
 
-export default editUserProfile;
+const sendInvitation = (body) => {
+  return baseUserService
+    .post('server invitation path', body)
+    .then((response) => Promise.resolve(response.data))
+    .catch((error) => Promise.reject(error));
+};
+
+export { editUserProfile, sendInvitation };

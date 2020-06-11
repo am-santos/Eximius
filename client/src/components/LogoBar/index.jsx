@@ -1,24 +1,28 @@
-import React from 'react'
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { signOut } from './../../services/authentication';
 
-const LogoBar = props => {
+import './index.scss';
+
+const LogoBar = (props) => {
   const signOutAndLiftUserState = () => {
-    console.log(props.updatedUser)
     signOut()
-    .then(() => {
-      props.updatedUser(null);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  }
-  
+      .then(() => {
+        props.updateUser(null);
+        props.history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  console.log(props.updateUser, 'i am update user');
   return (
-    <div>
+    <div className="logoBar">
       {(props.updateUser && (
         <>
+          <Link to="/">Eximius</Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (
@@ -27,7 +31,7 @@ const LogoBar = props => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default LogoBar;

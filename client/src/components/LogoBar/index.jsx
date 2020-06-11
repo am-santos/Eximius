@@ -3,6 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { signOut } from './../../services/authentication';
 
+import './index.scss';
+
 const LogoBar = (props) => {
   
   
@@ -20,9 +22,10 @@ const LogoBar = (props) => {
   
   console.log(props.updateUser, 'i am update user')
   return (
-    <div>
+    <div className="logoBar">
       {(props.updateUser && (
         <>
+          <Link to='/'>Eximius</Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (

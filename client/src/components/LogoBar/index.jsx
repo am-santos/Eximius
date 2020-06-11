@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { signOut } from './../../services/authentication';
@@ -6,26 +6,23 @@ import { signOut } from './../../services/authentication';
 import './index.scss';
 
 const LogoBar = (props) => {
-  
-  
   const signOutAndLiftUserState = () => {
     signOut()
-    .then(() => {
-      props.updatedUser();
-      props.history.push('/');
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  }
+      .then(() => {
+        props.updateUser(null);
+        props.history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  
-  console.log(props.updateUser, 'i am update user')
+  console.log(props.updateUser, 'i am update user');
   return (
     <div className="logoBar">
       {(props.updateUser && (
         <>
-          <Link to='/'>Eximius</Link>
+          <Link to="/">Eximius</Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (
@@ -34,7 +31,7 @@ const LogoBar = (props) => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default LogoBar;

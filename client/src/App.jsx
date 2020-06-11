@@ -49,20 +49,12 @@ class App extends Component {
   }
 
   updateUser = (user) => {
+    console.log('i am being called')
     this.setState({
       user
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.user !== this.state.user) {
-      loadAuthenticatedUser()
-        .then((user) => {
-          this.updateUser(user);
-        })
-        .catch((error) => console.log(error));
-    }
-  }
 
   render() {
     return (

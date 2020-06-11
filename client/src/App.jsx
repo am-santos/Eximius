@@ -55,19 +55,6 @@ class App extends Component {
     });
   };
 
-<<<<<<< HEAD
-  /* componentDidUpdate(prevProps, prevState) {
-    if (prevState.user !== this.state.user) {
-      loadAuthenticatedUser()
-        .then((user) => {
-          this.updateUser(user);
-        })
-        .catch((error) => console.log(error));
-    }
-  } */
-=======
->>>>>>> 9e5d6227bf7524984dd0844d6a80685d73c0ba2f
-
   render() {
     return (
       <div className='App'>

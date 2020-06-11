@@ -5,15 +5,15 @@ $fontColor: #fff;
 html {
   background-color: $backgroundColor;
   width: 100vw;
+  margin-bottom: 2em;
 }
 
 .App {
-  // background-color: $backgroundColor;
+  background-color: $backgroundColor;
   width: 100vw;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   color: white;
-  padding-bottom: 3em;
   button {
     width: 7em;
     background-color: $buttonColor;

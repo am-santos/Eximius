@@ -162,9 +162,11 @@ class EventSingleView extends Component {
           {(this.state.going && (
             <div className="attendanceButtons">
               <p>
-                {this.state.attendance} / {event.capacity}
+              <strong>Going: </strong> {this.state.attendance}/{event.capacity}
               </p>
+              <div className="description">
               <p>{event.description}</p>
+              </div>
               <button onClick={this.deleteUserRegistration}>I'm Out</button>
             </div>
           )) || (
@@ -172,8 +174,8 @@ class EventSingleView extends Component {
               <button onClick={this.registerUser}>I'm in</button>
             </div>
           )}
-          <NavBar />
         </div>
+          <NavBar />
       </>
     );
   }

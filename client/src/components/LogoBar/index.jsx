@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Link /*, Redirect*/ } from 'react-router-dom';
+import { Link, withRouter /*, Redirect*/ } from 'react-router-dom';
+//import {} from 'react-router'
 import { signOut } from './../../services/authentication';
 
 import './index.scss';
@@ -38,4 +39,4 @@ const LogoBar = (props) => {
   );
 };
 
-export default LogoBar;
+export default withRouter(LogoBar);

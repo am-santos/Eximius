@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { listEventsForUser } from './../../../services/attendance';
-import EventList from './../../../components/EventList';
+//import EventList from './../../../components/EventList';
 
 class MyEventListView extends Component {
   constructor(props) {
@@ -28,13 +28,15 @@ class MyEventListView extends Component {
   }
 
   render() {
-    console.log('i am here');
+    const events = this.state.events;
+    //events.map(event => console.log(event, 'inside of the map'))
     return (
       <div>
         Hello World
-        {this.state.events.map((event) => {
-          return <EventList event={event} />;
-        })}
+        {/* {events.map((event) => {
+          console.log('single event', event.eventId)
+          // return <EventList event={event.} />;
+        })} */}
       </div>
     );
   }

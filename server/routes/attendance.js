@@ -5,7 +5,7 @@ const router = new Router();
 
 const routeGuard = require('./../middleware/route-guard');
 
-const User = require('./../models/user');
+const Event = require('./../models/event');
 const Attendance = require('./../models/attendance');
 
 /*
@@ -28,8 +28,11 @@ router.get('/users/:eventId', (req, res, next) => {
 // GET all events for a specific user
 router.get('/events/:userId', (req, res, next) => {
   const userId = req.params.userId;
-  Attendance.find({ userId })
-    .then((users) => res.json({ users }))
+  Attendance.find({ userId }).populate('eventId')
+    .then((users) => {
+      console.log(users);
+      res.json({ users });
+    })  
     .catch((error) => next(error));
 });
 

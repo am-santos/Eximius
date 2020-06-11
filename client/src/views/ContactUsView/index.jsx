@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
+import './index.scss';
+
+
 class ContactUsView extends Component {
   render() {
     return (
-      <div>
+      <div className="contactUs">
         <h3>
           Tell us why you <br /> want to join us
         </h3>

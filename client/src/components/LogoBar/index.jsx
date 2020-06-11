@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Link /*, Redirect*/ } from 'react-router-dom';
+import { Link, withRouter /*, Redirect*/ } from 'react-router-dom';
+//import {} from 'react-router'
 import { signOut } from './../../services/authentication';
 
 import './index.scss';
@@ -21,19 +22,19 @@ const LogoBar = (props) => {
   };
 
   return (
-    <div className='logoBar'>
+    <div className="logoBar">
       {(props.updateUser && (
         <>
-          <Link to='/'>Eximius</Link>
+          <Link to="/">Eximius</Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (
         <>
-          <Link to='/authentication/log-in'>Log In</Link>
+          <Link to="/authentication/log-in">Log In</Link>
         </>
       )}
     </div>
   );
 };
 
-export default LogoBar;
+export default withRouter(LogoBar);

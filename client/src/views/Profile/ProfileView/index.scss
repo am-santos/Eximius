@@ -1,8 +1,33 @@
 .profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
+
+  h1 {
+    margin-bottom: 1em;
+  }
+
+  .profile-pic {
+    background-color: white;
+    border-radius: 50%;
+    padding: 1em;
+  }
   img{
     max-width: 100%;
     width: 3em;
+  }
+  h2, h3 {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding-top: 1em;
+    border-radius: 30px;
+    width: 200px;  
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    margin-top: 2em;
   }
 
   h1 {
@@ -11,6 +36,30 @@
     line-height: 29px;
     letter-spacing: 0.3em;
     padding-top: 1.5em;
+  }
+  .invites {
+    margin-top: 3em;
+    
+    h6 {
+      font-size: 1.5em;
+      margin: 0 auto;
+    }
+    p {
+      font-size: 1.5em;
+      text-decoration: none;
+      color: white;
+    }
+    img {
+      margin: 0 auto; 
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 0;
+
+    }
+    
   }
 
 }

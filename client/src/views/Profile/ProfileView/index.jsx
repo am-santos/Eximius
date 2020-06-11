@@ -1,43 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import NavBar from './../../../components/NavBar';
-import LogoBar from './../../../components/LogoBar';
+import NavBar from "./../../../components/NavBar";
+import LogoBar from "./../../../components/LogoBar";
 
-import './index.scss';
+import "./index.scss";
 
 const ProfileView = (props) => {
   const user = props.user;
   return (
-    <div className="profileCard">
-      {user && (
-        <>
-          <LogoBar updateUser={props.updateUser} />
-          <h1>Your Profile</h1>
-          {/* <img src={user.photo} alt={user.username} /> */}
-          <h2>{user.username}</h2>
-          <h3>{user.username}</h3>
-          <Link to='/profile/edit'>Edit Profile</Link>
-          {(user.invitationToken.length && (
-            <>
-              <p>Invites Left</p>
-              <Link to='/profile/invite'>
-                <p>{user.invitationToken.length}</p>
+    <>
+      <LogoBar updateUser={props.updateUser} />
+      <div className='profileCard'>
+        {user && (
+          <>
+            <h1>Your Profile</h1>
+            <div className='profile-pic'>
+              <img src='/userIcon/maleUser1.png' alt='profile pic' />
+            </div>
+            {/* <img src={user.photo} alt={user.username} /> */}
+            <h2>{user.username}</h2>
+            <h3>{user.email}</h3>
+            <Link to='/profile/edit'>Edit Profile</Link>
+            {(user.invitationToken.length && (
+              <div className='invites'>
+                <h6>Invites Left:</h6>
+                <Link to='/profile/invite'>
+                  <p>{user.invitationToken.length}</p>
+                  <img src='/icon/mail.png' alt='letter logo' />
+                  {/* ADD LETTER IMAGE */}
+                </Link>
+              </div>
+            )) || (
+              <>
+                <p>You have no invitations.</p>
                 <img src='/icon/mail.png' alt='letter logo' />
                 {/* ADD LETTER IMAGE */}
-              </Link>
-            </>
-          )) || (
-            <>
-              <p>You have no invitations.</p>
-              <img src='/icon/mail.png' alt='letter logo' />
-              {/* ADD LETTER IMAGE */}
-            </>
-          )}
-      <NavBar />
-        </>
-      )}
-    </div>
+              </>
+            )}
+            <NavBar />
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { listEventsForUser } from './../../../services/attendance';
 //import EventList from './../../../components/EventList';
 
+import NavBar from './../../../components/NavBar';
+import LogoBar from '../../../components/LogoBar';
+
 class MyEventListView extends Component {
   constructor(props) {
     super(props);
@@ -32,11 +35,14 @@ class MyEventListView extends Component {
     //events.map(event => console.log(event, 'inside of the map'))
     return (
       <div>
-        Hello World
+        <LogoBar updateUser={this.props.updateUser} />
+        <h4>Events you are attending</h4>
         {/* {events.map((event) => {
           console.log('single event', event.eventId)
           // return <EventList event={event.} />;
         })} */}
+
+        <NavBar />
       </div>
     );
   }

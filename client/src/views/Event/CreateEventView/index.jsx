@@ -4,6 +4,7 @@ import './style.scss';
 import { createEvent } from './../../../services/event';
 
 import NavBar from './../../../components/NavBar';
+import LogoBar from './../../../components/LogoBar';
 
 class CreateEventView extends Component {
   constructor(props) {
@@ -53,6 +54,8 @@ class CreateEventView extends Component {
 
   render() {
     return (
+      <>
+      <LogoBar updateUser={this.props.updateUser}/>
       <div className='form createEvent'>
         <h1>Create Event</h1>
         <form onSubmit={this.handleFormSubmission}>
@@ -121,6 +124,7 @@ class CreateEventView extends Component {
         </form>
         <NavBar />
       </div>
+      </>
     );
   }
 }

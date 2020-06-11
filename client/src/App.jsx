@@ -80,7 +80,7 @@ class App extends Component {
                 exat
                 render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
               />
-
+            
               <Route
                 path='/'
                 exact

@@ -51,7 +51,7 @@ app.use('/api/attendance', attendanceRouter);
 app.use('/api', userRouter);
 
 app.get('*', (req, res, next) => {
-  res.sendFile(join(__dirname, '../client/public/index.html'));
+  res.sendFile(join(__dirname, '../client/build/index.html'));
 });
 
 // Catch missing routes and forward to error handler

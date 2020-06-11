@@ -36,7 +36,10 @@ const createRegistration = (userId, eventId) => {
   // post from /create/:userId/:eventId
   return baseAuthenticationService
     .post(`/create/${userId}/${eventId}`)
-    .then((response) => Promise.resolve(response.data.users))
+    .then((response) => {
+      console.log('RESPONSE FROM THE SERVER', response);
+      return Promise.resolve(response.data.registration);
+    })
     .catch((error) => Promise.reject(error));
 };
 

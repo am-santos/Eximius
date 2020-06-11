@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { signOut } from './../../services/authentication';
 
 import './index.scss';
@@ -9,6 +9,9 @@ const LogoBar = (props) => {
   const signOutAndLiftUserState = () => {
     signOut()
       .then(() => {
+        // console.log('PROPS OF SIGN OUT', props);
+        // props.updateUser({ user: null });
+        // return <Redirect push to='/' />;
         props.updateUser(null);
         props.history.push('/');
       })
@@ -19,15 +22,15 @@ const LogoBar = (props) => {
 
   console.log(props.updateUser, 'i am update user');
   return (
-    <div className="logoBar">
+    <div className='logoBar'>
       {(props.updateUser && (
         <>
-          <Link to="/">Eximius</Link>
+          <Link to='/'>Eximius</Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (
         <>
-          <Link to="/authentication/log-in">Log In</Link>
+          <Link to='/authentication/log-in'>Log In</Link>
         </>
       )}
     </div>

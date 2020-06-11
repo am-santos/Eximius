@@ -45,19 +45,12 @@ class EventSingleView extends Component {
   checkUserRegistration = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
-    let registered;
     if (eventId && !this.state.going) {
       attendanceRegistration(userId, eventId)
         .then((file) => {
-          registered = file;
-          return listUsersForEvent(eventId);
-        })
-        .then((users) => {
-          console.log('USERS.LENGTH', users.length);
-          if (registered.length) {
+          if (file.length) {
             this.setState({
-              going: true,
-              attendance: users.length
+              going: true
             });
           } else {
             this.setState({
@@ -72,9 +65,21 @@ class EventSingleView extends Component {
   registerUser = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
+    let registered;
     createRegistration(userId, eventId)
       .then((register) => {
-        this.changeGoing();
+        registered = register;
+        return listUsersForEvent(eventId);
+      })
+      .then((users) => {
+        console.log('REGISTERED ->', registered);
+        console.log('USERS ->', users);
+        if (registered) {
+          this.setState({
+            attendance: users.length,
+            going: true
+          });
+        }
       })
       .catch((error) => console.log('user not registered', error));
   };
@@ -121,28 +126,28 @@ class EventSingleView extends Component {
     return (
       <>
         <LogoBar updateUser={this.props.updateUser} />
-        <div className="eventSingle">
+        <div className='eventSingle'>
           <h1>{event.name}</h1>
           <em>{event.category}</em>
           <img src={event.image} alt={event.name} />
           {userId === event.userId && (
-            <section className="eventChangers">
+            <section className='eventChangers'>
               <Link to={`/event/${event._id}/edit`}>Edit</Link>
               <button onClick={this.deleteSpecificEvent}>Delete</button>
             </section>
           )}
-          <div className="location-clock">
-            <div className="location">
+          <div className='location-clock'>
+            <div className='location'>
               <p>Location:</p>
               <em>{event.city}</em>
             </div>
-            <div className="time-container">
+            <div className='time-container'>
               <p>Time Left:</p>
               <ClockCountDown date={event.date} />
             </div>
           </div>
           {(this.state.going && (
-            <div className="attendanceButtons">
+            <div className='attendanceButtons'>
               <p>
                 {this.state.attendance} / {event.capacity}
               </p>

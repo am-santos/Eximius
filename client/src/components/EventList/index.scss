@@ -1,7 +1,7 @@
 .eventCard {
   display: flex;
   flex-direction: column;
-  width: 70vw;
+  width: 65vw;
   background-color: rgba($color: #fff, $alpha: 0.1);
   padding: 0;
   border-radius: 15px;
@@ -29,7 +29,7 @@
   }
 
   img {
-    width: 70vw;
+    width: 65vw;
     border-radius: 0 0 15px 15px;
     margin-bottom: -0.5em;
   }

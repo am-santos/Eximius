@@ -61,9 +61,6 @@ class App extends Component {
       <div className='App'>
         {this.state.loaded && (
           <BrowserRouter>
-            {/* LogoBar or NavBar */}
-            <Link to='/authentication/log-in/'>Log-In</Link>
-            <Link to='/authentication/sign-up/eximius-staff-laa'>Sign-up</Link>
 
             <Switch>
               <Route
@@ -101,7 +98,7 @@ class App extends Component {
               <Route
                 path='/event/:id'
                 exact
-                render={(props) => <EventSingleView {...props} userId={this.state.user._id} />}
+                render={(props) => <EventSingleView {...props} userId={this.state.user._id} updateUser={this.updateUser} />}
               />
 
               <Route

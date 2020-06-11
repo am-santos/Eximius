@@ -7,3 +7,38 @@
     padding-top: 1em;
   }
 }
+
+.createEvent {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+#time-input,
+#date-input {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 1em 1em;
+}
+
+
+.capacity{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #121212;
+  margin: 1em auto;
+  width: 50vw;
+  padding: 0.5em 0.9em;
+  border-radius: 30px;
+  label {
+    margin-left: 1em;
+  }
+  #capacity-input {
+    text-align: center;
+    width: 3em;
+    padding: 0;
+    font-size: 1.21em em;
+    margin: 1em 1em 1em 0;
+  }
+}
+

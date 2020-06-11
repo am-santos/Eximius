@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const serveFavicon = require('serve-favicon');
 const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const indexRouter = require('./routes/index');
@@ -51,7 +50,7 @@ app.use('/api/attendance', attendanceRouter);
 
 app.use('/api', userRouter);
 
-app.get('*', (req, res, next) => {
+app.get('*', (req, res) => {
   res.sendFile(join(__dirname, '../client/build/index.html'));
 });
 
@@ -61,7 +60,7 @@ app.use((req, res, next) => {
 });
 
 // Catch all error handler
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(error.status || 500);
   res.json({ type: 'error', error: { message: error.message } });
 });

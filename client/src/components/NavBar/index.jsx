@@ -13,8 +13,8 @@ function NavBar() {
       <Link to="/event/create">
         <img src="/icon/addEvent.png" alt="add event" />
       </Link>
-      <Link to="/">
-        <img src="/icon/eventList.png" alt="event List" />
+      <Link to="/event/my-events">
+        <img src="/icon/eventList.png" alt=" my event List" />
       </Link>
       <Link to='/profile'>
         <img src="/icon/profile.png" alt="profile page" />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link /*, Redirect*/ } from 'react-router-dom';
 import { signOut } from './../../services/authentication';
 
 import './index.scss';
@@ -20,7 +20,6 @@ const LogoBar = (props) => {
       });
   };
 
-  console.log(props.updateUser, 'i am update user');
   return (
     <div className='logoBar'>
       {(props.updateUser && (

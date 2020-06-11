@@ -2,7 +2,7 @@
 
 const { Router } = require('express');
 const EventRouter = new Router();
-const routeGuard = require('./../middleware/route-guard');
+
 
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
@@ -25,7 +25,7 @@ const uploader = multer({ storage });
 
 // Models
 const Event = require('../models/event');
-const User = require('../models/user');
+
 
 EventRouter.get('/list', (req, res, next) => {
   const now = new Date();
@@ -83,7 +83,7 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
     });
 });
 
-EventRouter.post('/:id/edit', uploader.single('image'), (req, res, next) => {
+EventRouter.post('/:id/edit', uploader.single('image'), (req, res) => {
   const eventId = req.params.id;
   console.log('THIS IS THE BODY', req.body);
   let image;
@@ -94,9 +94,6 @@ EventRouter.post('/:id/edit', uploader.single('image'), (req, res, next) => {
   }
 
   const { name, category, description, date, city, capacity } = req.body;
-
-  console.log('THIS IS THE image ->', image);
-  console.log('THIS IS THE req.body.image ->', req.body.image);
   Event.findByIdAndUpdate(
     eventId,
     { name, category, description, date, image, city, capacity },
@@ -111,7 +108,7 @@ EventRouter.post('/:id/edit', uploader.single('image'), (req, res, next) => {
     });
 });
 
-EventRouter.post('/:id/delete', (req, res, next) => {
+EventRouter.post('/:id/delete', (req, res) => {
   const eventId = req.params.id;
   console.log(eventId);
 

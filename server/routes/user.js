@@ -51,16 +51,16 @@ UserRouter.post('/user/profile/invitation', (req, res, next) => {
           from: `Eximius ${process.env.NODEMAILER_EMAIL}`,
 
           // Development
-          to: `${process.env.NODEMAILER_EMAIL}`,
+          // to: `${process.env.NODEMAILER_EMAIL}`,
           // Production
-          // to: `${email}`,
+          to: `${email}`,
 
           subject: `Invited to a new society`,
 
           // Development
-          html: `<br/><br/><strong>Welcome to Eximius</strong><br/> <br/> <p>You have been invited by ${user.username} to join us. </p> <br/><br/> <p> ${message} </p> <br/> <br/> <em>Click on the following link to accept your invitation.</em> <br/> <a href="http://localhost:3000/authentication/sign-up/${token}">Accept your invitation</a> <br/> <p>${user.username} & Eximius Team,<p/> <br/> <p>See you around<p/>`
+          // html: `<br/><br/><strong>Welcome to Eximius</strong><br/> <br/> <p>You have been invited by ${user.username} to join us. </p> <br/><br/> <p> ${message} </p> <br/> <br/> <em>Click on the following link to accept your invitation.</em> <br/> <a href="http://localhost:3000/authentication/sign-up/${token}">Accept your invitation</a> <br/> <p>${user.username} & Eximius Team,<p/> <br/> <p>See you around<p/>`
           // Production
-          // html: `<strong>Welcome to Eximius</strong><br/> <br/> <p>You have been invited to join Eximius </p>  <br/> <em>Click on the following link to accept your invitation.</em> <br/> <a href="https://supplii.herokuapp.com/authentication/welcome/${token}">Accept your invitation</a>  <br/> <p>${user.username} & Eximius Team,<p/> <br/> <p>See you around<p/>`
+          html: `<br/><br/><strong>Welcome to Eximius</strong><br/> <br/> <p>You have been invited by ${user.username} to join us. </p> <br/><br/> <p> ${message} </p> <br/> <br/> <em>Click on the following link to accept your invitation.</em> <br/> <a href="https://eximius.herokuapp.com/authentication/sign-up/${token}">Accept your invitation</a> <br/> <p>${user.username} & Eximius Team,<p/> <br/> <p>See you around<p/>`
         });
       }
     })

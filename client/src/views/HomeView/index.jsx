@@ -10,7 +10,6 @@ import EventList from './../../components/EventList';
 import NavBar from './../../components/NavBar';
 import LogoBar from './../../components/LogoBar';
 
-
 class HomeView extends Component {
   constructor(props) {
     super(props);
@@ -39,14 +38,14 @@ class HomeView extends Component {
       <div className='dashboard'>
         {(user && (
           <>
-            <LogoBar updateUser={this.props.updateUser}/>
+            <LogoBar updateUser={this.props.updateUser} />
             {(!this.state.events && (
               <>
                 <p>There are no events at the moment</p>
               </>
             )) || (
               <>
-                <h1>Whats coming?</h1>
+                <h1>What's coming?</h1>
                 {this.state.events.map((event) => {
                   return <EventList key={event._id} event={event} />;
                 })}

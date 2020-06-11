@@ -24,7 +24,9 @@ const LogoBar = (props) => {
     <div className='logoBar'>
       {(props.updateUser && (
         <>
-          <Link to='/'>Eximius</Link>
+          <Link to='/'>
+            <img id='logo-icon' src='/logo/logo-white.png' alt='' />
+          </Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (

@@ -40,7 +40,6 @@ class EditProfileView extends Component {
     editUserProfile({ email, username })
       .then((user) => {
         this.props.updateUser(user);
-        // Redirect user to profile page after successful edit
         this.props.history.push('/profile');
       })
       .catch((error) => {

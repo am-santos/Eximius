@@ -14,8 +14,8 @@ const editUserProfile = (body) => {
 
 const sendInvitation = (body) => {
   return baseUserService
-    .post('server invitation path', body)
-    .then((response) => Promise.resolve(response.data))
+    .post('/profile/invitation', body)
+    .then((response) => Promise.resolve(response.data.emailResult))
     .catch((error) => Promise.reject(error));
 };
 

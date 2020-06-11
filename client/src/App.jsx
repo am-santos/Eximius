@@ -54,7 +54,7 @@ class App extends Component {
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  /* componentDidUpdate(prevProps, prevState) {
     if (prevState.user !== this.state.user) {
       loadAuthenticatedUser()
         .then((user) => {
@@ -62,7 +62,7 @@ class App extends Component {
         })
         .catch((error) => console.log(error));
     }
-  }
+  } */
 
   render() {
     return (

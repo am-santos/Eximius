@@ -27,10 +27,16 @@ class EventSingleView extends Component {
   }
 
   loadEvent = () => {
+    let event;
     singleEvent(this.props.match.params.id)
-      .then((event) => {
+      .then((doc) => {
+        event = doc;
+        return listUsersForEvent(this.props.match.params.id);
+      })
+      .then((users) => {
         this.setState({
-          event
+          event,
+          attendance: users.length
         });
       })
       .catch((error) => console.log('no event received', error));
@@ -72,8 +78,6 @@ class EventSingleView extends Component {
         return listUsersForEvent(eventId);
       })
       .then((users) => {
-        console.log('REGISTERED ->', registered);
-        console.log('USERS ->', users);
         if (registered) {
           this.setState({
             attendance: users.length,
@@ -83,6 +87,15 @@ class EventSingleView extends Component {
       })
       .catch((error) => console.log('user not registered', error));
   };
+
+  /* calculateAttendance = () => {
+    const eventId = this.props.match.params.id;
+    listUsersForEvent(eventId)
+      .then((users) => {
+        return users.length;
+      })
+      .catch((error) => console.log('Error on list of users for event', error));
+  }; */
 
   deleteUserRegistration = () => {
     const userId = this.props.userId;

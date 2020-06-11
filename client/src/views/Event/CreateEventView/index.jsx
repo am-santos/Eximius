@@ -43,7 +43,7 @@ class CreateEventView extends Component {
 
     createEvent({ name, image, city, date, description, category, userId, capacity })
       .then((event) => {
-        console.log('we are here', event)
+        console.log('we are here', event);
         this.props.history.push('/');
       })
       .catch((error) => {
@@ -56,7 +56,7 @@ class CreateEventView extends Component {
       <div className='form'>
         <h1>Create Event</h1>
         <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor='name'></label>
+          <label htmlFor='name-input'></label>
           <input
             id='name-input'
             name='name'
@@ -67,7 +67,7 @@ class CreateEventView extends Component {
           />
           <label htmlFor='image-input'></label>
           <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
-          <label htmlFor='Category-input'></label>
+          <label htmlFor='category-input'></label>
           <input
             id='category-input'
             name='category'

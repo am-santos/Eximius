@@ -12,4 +12,11 @@ const editUserProfile = (body) => {
     .catch((error) => Promise.reject(error));
 };
 
-export default editUserProfile;
+const sendInvitation = () => {
+  return baseAuthenticationService
+    .post('server invitation path', body)
+    .then((response) => Promise.resolve(response.data))
+    .catch((error) => Promise.reject(error));
+};
+
+export { editUserProfile, sendInvitation };

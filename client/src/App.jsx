@@ -89,7 +89,7 @@ class App extends Component {
 
               <Route
                 path="/event/create"
-                render={(props) => <CreateEventView {...props} user={this.state.user} />}
+                render={(props) => <CreateEventView {...props} user={this.state.user} updateUser={this.updateUser} />}
               />
 
               <Route
@@ -107,7 +107,7 @@ class App extends Component {
               <Route
                 path="/my-events"
                 exact
-                render={(props) => <MyEventListView {...props} userId={this.state.user._id} />}
+                render={(props) => <MyEventListView {...props} userId={this.state.user._id} updateUser={this.updateUser}/>}
               />
 
               <Route path="/event/:id/edit" exact component={EventEditView} />

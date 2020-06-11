@@ -8,6 +8,8 @@ import { listEvents } from './../../services/event';
 import EventList from './../../components/EventList';
 
 import NavBar from './../../components/NavBar';
+import LogoBar from './../../components/LogoBar';
+
 
 class HomeView extends Component {
   constructor(props) {
@@ -37,6 +39,7 @@ class HomeView extends Component {
       <div className='dashboard'>
         {(user && (
           <>
+            <LogoBar updateUser={this.props.updateUser}/>
             {(!this.state.events && (
               <>
                 <p>There are no events at the moment</p>

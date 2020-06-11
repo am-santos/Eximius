@@ -3,18 +3,22 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { signOut } from './../../services/authentication';
 
-const LogoBar = props => {
+const LogoBar = (props) => {
+  
+  
   const signOutAndLiftUserState = () => {
-    console.log(props.updatedUser)
     signOut()
     .then(() => {
-      props.updatedUser(null);
+      props.updatedUser();
+      props.history.push('/');
     })
     .catch(error => {
       console.log(error);
     })
   }
+
   
+  console.log(props.updateUser, 'i am update user')
   return (
     <div>
       {(props.updateUser && (

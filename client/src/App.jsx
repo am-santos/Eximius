@@ -54,6 +54,16 @@ class App extends Component {
     });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.user !== this.state.user) {
+      loadAuthenticatedUser()
+        .then((user) => {
+          this.updateUser(user);
+        })
+        .catch((error) => console.log(error));
+    }
+  }
+
   render() {
     return (
       <div className='App'>
@@ -104,8 +114,9 @@ class App extends Component {
 
               <Route
                 path='/profile/edit'
-                updateUser={this.updateUser}
-                component={(props) => <EditProfileView {...props} user={this.state.user} />}
+                component={(props) => (
+                  <EditProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
               />
 
               <Route
@@ -117,8 +128,9 @@ class App extends Component {
 
               <Route
                 path='/profile'
-                updateUser={this.updateUser}
-                render={(props) => <ProfileView {...props} user={this.state.user} />}
+                render={(props) => (
+                  <ProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
               />
 
               <Route path='/event/:id/edit' exact component={EventEditView} />

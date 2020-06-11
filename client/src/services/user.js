@@ -12,8 +12,8 @@ const editUserProfile = (body) => {
     .catch((error) => Promise.reject(error));
 };
 
-const sendInvitation = () => {
-  return baseAuthenticationService
+const sendInvitation = (body) => {
+  return baseUserService
     .post('server invitation path', body)
     .then((response) => Promise.resolve(response.data))
     .catch((error) => Promise.reject(error));

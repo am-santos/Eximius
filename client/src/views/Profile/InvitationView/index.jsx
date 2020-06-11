@@ -9,7 +9,7 @@ class InvitationView extends Component {
     };
   }
 
-  handleFormSubmission() {
+  handleFormSubmission(event) {
     event.preventDefault();
     const { email, message } = this.state;
 

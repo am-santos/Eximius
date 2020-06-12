@@ -9,6 +9,7 @@ import EventList from './../../components/EventList';
 
 import NavBar from './../../components/NavBar';
 import LogoBar from './../../components/LogoBar';
+import AnimationTitle from './../../components/AnimationTitle';
 
 class HomeView extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class HomeView extends Component {
         )) || (
           <>
             <section className='home'>
-              <h1>Eximius</h1>
+              <AnimationTitle />
 
               <Link to='/authentication/log-in'>Log In</Link>
             </section>

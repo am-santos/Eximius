@@ -23,6 +23,11 @@
     background-color: rgba($color: #fff, $alpha: 0.2);
     border-radius: 2em;
   }
+  .title {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
 }
 
 .dashboard {

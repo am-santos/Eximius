@@ -8,11 +8,18 @@
     padding-top: 1em;
   }
 
+
   #time-input,
   #date-input {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
+    font-weight: bold;
     padding: 1em 1em;
+  }
+
+  #image-input {
+    font-weight: bold;
+    font-size: 0.8em;
   }
 
   .capacity {
@@ -26,6 +33,9 @@
     border-radius: 30px;
     label {
       margin-left: 1em;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-transform: lowercase;
     }
     #capacity-input {
       text-align: center;
@@ -33,6 +43,7 @@
       padding: 0;
       font-size: 1.21em em;
       margin: 1em 1em 1em 0;
+      font-weight: bold;
     }
   }
 }

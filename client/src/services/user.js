@@ -19,4 +19,11 @@ const sendInvitation = (body) => {
     .catch((error) => Promise.reject(error));
 };
 
-export { editUserProfile, sendInvitation };
+const sendContactMessage = (body) => {
+  return baseUserService
+    .post('/profile/contact-us', body)
+    .then((response) => Promise.resolve(response.data.emailResult))
+    .catch((error) => Promise.reject(error));
+};
+
+export { editUserProfile, sendInvitation, sendContactMessage };

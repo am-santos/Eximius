@@ -56,31 +56,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         {this.state.loaded && (
           <BrowserRouter>
             <Switch>
               <Route
-                path="/authentication/log-in"
+                path='/authentication/log-in'
                 exact
                 render={(props) => <LogInView {...props} updateUser={this.updateUser} />}
               />
 
               <Route
-                path="/authentication/sign-up/:token"
+                path='/authentication/sign-up/:token'
                 exact
                 render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
               />
 
               <Route
                 exact
-                path="/authentication/sign-up/eximius-staff-laa"
+                path='/authentication/sign-up/eximius-staff-laa'
                 exat
                 render={(props) => <SignUpView {...props} updateUser={this.updateUser} />}
               />
 
               <Route
-                path="/"
+                path='/'
                 exact
                 render={(props) => (
                   <HomeView {...props} user={this.state.user} updateUser={this.updateUser} />
@@ -88,12 +88,14 @@ class App extends Component {
               />
 
               <Route
-                path="/event/create"
-                render={(props) => <CreateEventView {...props} user={this.state.user} updateUser={this.updateUser} />}
+                path='/event/create'
+                render={(props) => (
+                  <CreateEventView {...props} user={this.state.user} updateUser={this.updateUser} />
+                )}
               />
 
               <Route
-                path="/event/:id"
+                path='/event/:id'
                 exact
                 render={(props) => (
                   <EventSingleView
@@ -105,35 +107,41 @@ class App extends Component {
               />
 
               <Route
-                path="/my-events"
+                path='/my-events'
                 exact
-                render={(props) => <MyEventListView {...props} userId={this.state.user._id} updateUser={this.updateUser}/>}
+                render={(props) => (
+                  <MyEventListView
+                    {...props}
+                    userId={this.state.user._id}
+                    updateUser={this.updateUser}
+                  />
+                )}
               />
 
-              <Route path="/event/:id/edit" exact component={EventEditView} />
+              <Route path='/event/:id/edit' exact component={EventEditView} />
 
               <Route
-                path="/profile/edit"
+                path='/profile/edit'
                 component={(props) => (
                   <EditProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
               />
 
               <Route
-                path="/profile/invite"
+                path='/profile/invite'
                 component={(props) => (
                   <InvitationView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
               />
 
               <Route
-                path="/profile"
+                path='/profile'
                 render={(props) => (
                   <ProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
               />
 
-              <Route path="/contact-us" component={ContactUsView} />
+              <Route path='/contact-us' component={ContactUsView} updateUser={this.updateUser} />
             </Switch>
           </BrowserRouter>
         )}

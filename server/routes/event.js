@@ -3,7 +3,6 @@
 const { Router } = require('express');
 const EventRouter = new Router();
 
-
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
@@ -26,17 +25,19 @@ const uploader = multer({ storage });
 // Models
 const Event = require('../models/event');
 
-
 EventRouter.get('/list', (req, res, next) => {
   const now = new Date();
 
   let month = now.getMonth() + 1;
   let day = now.getDate();
+  let hrs = now.getHours();
+  let mins = now.getMinutes();
   if (month < 10) month = '0' + month;
   if (day < 10) day = '0' + day;
+  if (hrs < 10) hrs = '0' + hrs;
+  if (mins < 10) mins = '0' + mins;
   // '2000-01-01,01:01'
-  const strNow =
-    now.getFullYear() + '-' + month + '-' + day + ',' + now.getHours() + ':' + now.getMinutes();
+  const strNow = now.getFullYear() + '-' + month + '-' + day + ',' + hrs + ':' + mins;
   console.log('time now in string', strNow, typeof strNow);
   Event.find({ date: { $gte: strNow } })
     .sort({ date: 1 })

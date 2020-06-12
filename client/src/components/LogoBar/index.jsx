@@ -23,14 +23,14 @@ const LogoBar = (props) => {
       {(props.updateUser && (
         <>
           <Link to='/'>
-            <img id='logo-icon' src='/logo/logo-white.png' alt='' />
+            <img id='logo-icon' src='/logo/logo-white.png' alt='eximius logo' />
           </Link>
           <button onClick={signOutAndLiftUserState}>Sign Out</button>
         </>
       )) || (
         <>
           <Link to='/'>
-            <img id='logo-icon' src='/logo/logo-white.png' alt='' />
+            <img id='logo-icon' src='/logo/logo-white.png' alt='eximius logo' />
           </Link>
           <Link to='/authentication/log-in'>Log In</Link>
         </>

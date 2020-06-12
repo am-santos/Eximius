@@ -34,6 +34,10 @@
     text-transform: lowercase;
     font-weight: bold;
   }
+  input[value]{
+    font-weight: bold;
+    text-align: center;
+  }
 }
 @media (min-width: 841px) {
   .form {

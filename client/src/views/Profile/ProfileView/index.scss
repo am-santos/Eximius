@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   height: 80vh;
-
+  margin-bottom: 3.5em;
   h1 {
     margin-bottom: 1em;
   }
@@ -20,15 +20,17 @@
     max-width: 100%;
     width: 3em;
   }
-  h2, h3 {
-    
+  h4 {
+    margin-top: 0.5em;
     font-size: 1.5em;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 30px;
-    padding: 0.5em;
-    border-radius: 30px;
-    width: 200px;  
+    padding: 0.5em 1em;
+    border-radius: 30px; 
   }
+  
+  
+
   a {
     text-decoration: none;
     margin-top: 2em;
@@ -66,6 +68,7 @@
     
   }
 
+  
 }
 
 

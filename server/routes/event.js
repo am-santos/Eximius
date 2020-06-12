@@ -86,7 +86,6 @@ EventRouter.post('/create', uploader.single('image'), (req, res, next) => {
 
 EventRouter.post('/:id/edit', uploader.single('image'), (req, res) => {
   const eventId = req.params.id;
-  console.log('THIS IS THE BODY', req.body);
   let image;
   if (req.file) {
     image = req.file.path;
@@ -111,7 +110,6 @@ EventRouter.post('/:id/edit', uploader.single('image'), (req, res) => {
 
 EventRouter.post('/:id/delete', (req, res) => {
   const eventId = req.params.id;
-  console.log(eventId);
 
   Event.findByIdAndDelete(eventId)
     .then((event) => {

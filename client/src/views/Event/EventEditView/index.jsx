@@ -4,6 +4,7 @@ import './style.scss';
 import { singleEvent, editEvent } from './../../../services/event';
 
 import NavBar from './../../../components/NavBar';
+import LogoBar from './../../../components/LogoBar';
 
 class EditEventView extends Component {
   constructor(props) {
@@ -77,7 +78,9 @@ class EditEventView extends Component {
 
   render() {
     return (
-      <div className='form'>
+      <>
+      <LogoBar updateUser={this.props.updateUser}/>
+      <div className='form edit-event'>
         <h1>Edit Event</h1>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='name'></label>
@@ -145,8 +148,9 @@ class EditEventView extends Component {
           />
           <button>Edit</button>
         </form>
-        <NavBar />
       </div>
+        <NavBar />
+    </>
     );
   }
 }

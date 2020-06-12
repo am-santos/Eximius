@@ -1,8 +1,8 @@
 .form {
   h1 {
     font-weight: 300;
-    font-size: 25px;
-    line-height: 29px;
+    font-size: 1.4em;
+    line-height: 1.4em;
     letter-spacing: 0.3em;
     padding-top: 1em;
   }
@@ -20,8 +20,7 @@
   padding: 1em 1em;
 }
 
-
-.capacity{
+.capacity {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,4 +40,3 @@
     margin: 1em 1em 1em 0;
   }
 }
-

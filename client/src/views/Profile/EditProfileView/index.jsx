@@ -8,7 +8,7 @@ class EditProfileView extends Component {
     super(props);
     this.state = {
       email: '',
-      username: '',
+      username: ''
     };
   }
 
@@ -25,7 +25,6 @@ class EditProfileView extends Component {
         console.log('ERROR ON APP.JSX - COMPONENTDIDMOUNT, ERROR ->', err);
       });
   }
-
 
   handleInputChange = ({ target: { name, value } }) => {
     this.setState({
@@ -47,7 +46,6 @@ class EditProfileView extends Component {
       });
   };
 
-  
   render() {
     return (
       <div className='form'>

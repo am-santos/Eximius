@@ -44,6 +44,7 @@ class SignUpView extends Component {
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='email'></label>
           <input
+            required
             id='email-input'
             name='email'
             type='email'
@@ -53,6 +54,7 @@ class SignUpView extends Component {
           />
           <label htmlFor='username-input'></label>
           <input
+            required
             id='username-input'
             name='username'
             type='text'
@@ -62,6 +64,7 @@ class SignUpView extends Component {
           />
           <label htmlFor='password-input'></label>
           <input
+            required
             id='password-input'
             name='password'
             type='password'

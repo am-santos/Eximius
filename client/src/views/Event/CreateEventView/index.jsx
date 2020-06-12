@@ -55,75 +55,89 @@ class CreateEventView extends Component {
   render() {
     return (
       <>
-      <LogoBar updateUser={this.props.updateUser}/>
-      <div className='form createEvent'>
-        <h1>Create Event</h1>
-        <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor='name-input'></label>
-          <input
-            id='name-input'
-            name='name'
-            type='text'
-            placeholder='Name'
-            value={this.state.name}
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor='image-input'></label>
-          <input id='image-input' name='image' type='file' onChange={this.handleFileInputChange} />
-          <label htmlFor='category-input'></label>
-          <input
-            id='category-input'
-            name='category'
-            type='text'
-            placeholder='Category'
-            value={this.state.category}
-            onChange={this.handleInputChange}
-          />
-          <div className="capacity">
-            <label htmlFor='capacity-input'><small>Capacity</small></label>
+        <LogoBar updateUser={this.props.updateUser} />
+        <div className='form createEvent'>
+          <h1>Create Event</h1>
+          <form onSubmit={this.handleFormSubmission}>
+            <label htmlFor='name-input'></label>
             <input
-              id='capacity-input'
-              name='capacity'
-              type='number'
-              placeholder='Capacity'
-              value={this.state.capacity}
+              required
+              id='name-input'
+              name='name'
+              type='text'
+              placeholder='Name'
+              value={this.state.name}
               onChange={this.handleInputChange}
             />
-          </div>
-          <section className='hourDate'>
-            <label htmlFor='date-input'></label>
-            <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />
+            <label htmlFor='image-input'></label>
             <input
-              id='time-input'
-              name='time'
-              type='time'
-              placeholder='Time'
-              value={this.state.time}
+              required
+              id='image-input'
+              name='image'
+              type='file'
+              onChange={this.handleFileInputChange}
+            />
+            <label htmlFor='category-input'></label>
+            <input
+              required
+              id='category-input'
+              name='category'
+              type='text'
+              placeholder='Category'
+              value={this.state.category}
               onChange={this.handleInputChange}
             />
-          </section>
-          <label htmlFor='city-input'></label>
-          <input
-            id='city-input'
-            name='city'
-            type='text'
-            placeholder='City'
-            value={this.state.city}
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor='description-input'></label>
-          <input
-            id='description-input'
-            name='description'
-            type='text'
-            placeholder='Description'
-            value={this.state.description}
-            onChange={this.handleInputChange}
-          />
-          <button>Create</button>
-        </form>
-        <NavBar />
-      </div>
+            <div className='capacity'>
+              <label htmlFor='capacity-input'>
+                <small>Capacity</small>
+              </label>
+              <input
+                required
+                id='capacity-input'
+                name='capacity'
+                type='number'
+                placeholder='Capacity'
+                value={this.state.capacity}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <section className='hourDate'>
+              <label htmlFor='date-input'></label>
+              <input id='date-input' name='date' type='date' onChange={this.handleInputChange} />
+              <input
+                required
+                id='time-input'
+                name='time'
+                type='time'
+                placeholder='Time'
+                value={this.state.time}
+                onChange={this.handleInputChange}
+              />
+            </section>
+            <label htmlFor='city-input'></label>
+            <input
+              required
+              id='city-input'
+              name='city'
+              type='text'
+              placeholder='City'
+              value={this.state.city}
+              onChange={this.handleInputChange}
+            />
+            <label htmlFor='description-input'></label>
+            <input
+              required
+              id='description-input'
+              name='description'
+              type='text'
+              placeholder='Description'
+              value={this.state.description}
+              onChange={this.handleInputChange}
+            />
+            <button>Create</button>
+          </form>
+          <NavBar />
+        </div>
       </>
     );
   }

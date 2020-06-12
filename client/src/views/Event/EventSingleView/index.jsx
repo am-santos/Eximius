@@ -139,43 +139,43 @@ class EventSingleView extends Component {
     return (
       <>
         <LogoBar updateUser={this.props.updateUser} />
-        <div className="eventSingle">
+        <div className='eventSingle'>
           <h1>{event.name}</h1>
           <em>{event.category}</em>
           <img src={event.image} alt={event.name} />
           {userId === event.userId && (
-            <section className="eventChangers">
+            <section className='eventChangers'>
               <Link to={`/event/${event._id}/edit`}>Edit</Link>
               <button onClick={this.deleteSpecificEvent}>Delete</button>
             </section>
           )}
-          <div className="location-clock">
-            <div className="location">
+          <div className='location-clock'>
+            <div className='location'>
               <p>Location:</p>
               <em>{event.city}</em>
             </div>
-            <div className="time-container">
+            <div className='time-container'>
               <p>Time Left:</p>
               <ClockCountDown date={event.date} />
             </div>
           </div>
           {(this.state.going && (
-            <div className="attendanceButtons">
+            <div className='attendanceButtons'>
               <p>
-              <strong>Going: </strong> {this.state.attendance}/{event.capacity}
+                <strong>Going: </strong> {this.state.attendance}/{event.capacity}
               </p>
-              <div className="description">
-              <p>{event.description}</p>
+              <div className='description'>
+                <p>{event.description}</p>
               </div>
               <button onClick={this.deleteUserRegistration}>I'm Out</button>
             </div>
           )) || (
-            <div className="attendanceButtons">
+            <div className='attendanceButtons'>
               <button onClick={this.registerUser}>I'm in</button>
             </div>
           )}
         </div>
-          <NavBar />
+        <NavBar />
       </>
     );
   }

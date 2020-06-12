@@ -48,7 +48,7 @@ app.use('/api/authentication', authenticationRouter);
 app.use('/api/event', eventRouter);
 app.use('/api/attendance', attendanceRouter);
 
-app.use('/api', userRouter);
+app.use('/api/user', userRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(join(__dirname, '../client/build/index.html'));

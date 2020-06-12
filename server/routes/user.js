@@ -17,23 +17,16 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-UserRouter.get('/profile', routeGuard, (req, res) => {
-  res.json({
-    user: req.user || null
-  });
-});
-
-UserRouter.post('/user/profile/edit', routeGuard, (req, res, next) => {
+UserRouter.post('/profile/edit', routeGuard, (req, res, next) => {
   const userId = req.user._id;
   User.findByIdAndUpdate(userId, { ...req.body }, { new: true })
     .then((user) => res.json({ user }))
     .catch((error) => next(error));
 });
 
-UserRouter.post('/user/profile/invitation', (req, res, next) => {
+UserRouter.post('/profile/invitation', (req, res, next) => {
   const { email, message } = req.body;
   const userId = req.user._id;
-  console.log('user information', req.user);
 
   let token;
   let user;

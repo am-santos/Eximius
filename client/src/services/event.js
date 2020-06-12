@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const baseEventService = axios.create({
-  baseURL: "/api/event",
+  baseURL: '/api/event'
 });
 
 const listEvents = () => {
   return baseEventService
-    .get("/list")
+    .get('/list')
     .then((response) => {
       const events = response.data.event;
       return Promise.resolve(events);
@@ -15,21 +15,18 @@ const listEvents = () => {
 };
 
 const createEvent = (body) => {
-  console.log('i got here')
-  console.log(body.date);
   const form = new FormData();
-  form.append("name", body.name);
-  form.append("image", body.image);
-  form.append("date", body.date);
-  form.append("description", body.description);
-  form.append("category", body.category);
-  form.append("capacity", body.capacity);
-  form.append("city", body.city);
+  form.append('name', body.name);
+  form.append('image', body.image);
+  form.append('date', body.date);
+  form.append('description', body.description);
+  form.append('category', body.category);
+  form.append('capacity', body.capacity);
+  form.append('city', body.city);
 
   return baseEventService
-    .post("/create", form)
+    .post('/create', form)
     .then((response) => {
-      console.log("response", response);
       const form = response.data.form;
       return Promise.resolve(form);
     })
@@ -49,20 +46,18 @@ const singleEvent = (id) => {
 };
 
 const editEvent = (body, id) => {
-  console.log("Im in edit event, body", body);
   const form = new FormData();
-  form.append("name", body.name);
-  form.append("image", body.image);
-  form.append("date", body.date);
-  form.append("description", body.description);
-  form.append("category", body.category);
-  form.append("capacity", body.capacity);
-  form.append("city", body.city);
+  form.append('name', body.name);
+  form.append('image', body.image);
+  form.append('date', body.date);
+  form.append('description', body.description);
+  form.append('category', body.category);
+  form.append('capacity', body.capacity);
+  form.append('city', body.city);
 
-  //console.log("This is my form, form", form);
-  for (var key of form.entries()) {
-    console.log(key[0] + ", " + key[1]);
-  }
+  // for (var key of form.entries()) {
+  //   console.log(key[0] + ", " + key[1]);
+  // }
 
   return baseEventService
     .post(`/${id}/edit`, form)
@@ -76,8 +71,8 @@ const editEvent = (body, id) => {
 const deleteEvent = (id) => {
   return baseEventService
     .post(`/${id}/delete`)
-    .then(response => Promise.resolve(response.data))
-    .catch(err => console.log(err))
-}
+    .then((response) => Promise.resolve(response.data))
+    .catch((err) => console.log(err));
+};
 
 export { listEvents, createEvent, singleEvent, editEvent, deleteEvent };

@@ -5,7 +5,6 @@ const baseUserService = axios.create({
 });
 
 const editUserProfile = (body) => {
-  console.log('BODY OF EDIT USER PROFILE ->', body);
   return baseUserService
     .post(`/profile/edit`, body)
     .then((response) => Promise.resolve(response.data.user))

@@ -13,7 +13,6 @@ class EditProfileView extends Component {
   }
 
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT THIS.PROPS ->', this.props);
     loadAuthenticatedUser()
       .then((user) => {
         this.setState({
@@ -22,7 +21,7 @@ class EditProfileView extends Component {
         });
       })
       .catch((err) => {
-        console.log('ERROR ON APP.JSX - COMPONENTDIDMOUNT, ERROR ->', err);
+        console.log('ERROR ON COMPONENTDIDMOUNT OF EDITPROFILEVIEW.JSX, ERROR ->', err);
       });
   }
 

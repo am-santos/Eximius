@@ -10,9 +10,6 @@ const LogoBar = (props) => {
   const signOutAndLiftUserState = () => {
     signOut()
       .then(() => {
-        // console.log('PROPS OF SIGN OUT', props);
-        // props.updateUser({ user: null });
-        // return <Redirect push to='/' />;
         props.updateUser(null);
         props.history.push('/');
       })

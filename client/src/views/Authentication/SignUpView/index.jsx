@@ -13,7 +13,6 @@ class SignUpView extends Component {
   }
 
   handleInputChange = ({ target: { name, value } }) => {
-    console.log('this was updated');
     this.setState({
       [name]: value
     });
@@ -21,14 +20,11 @@ class SignUpView extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    console.log('submited', this.state);
-    console.log('event', event);
     const token = this.props.match.params.token;
     const { email, username, password } = this.state;
 
     signUp({ email, username, password, token })
       .then((user) => {
-        console.log(user);
         this.props.updateUser(user);
         // Redirect user to home page after successful sign up
         this.props.history.push('/');

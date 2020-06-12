@@ -88,23 +88,11 @@ class EventSingleView extends Component {
       .catch((error) => console.log('user not registered', error));
   };
 
-  /* calculateAttendance = () => {
-    const eventId = this.props.match.params.id;
-    listUsersForEvent(eventId)
-      .then((users) => {
-        return users.length;
-      })
-      .catch((error) => console.log('Error on list of users for event', error));
-  }; */
-
   deleteUserRegistration = () => {
     const userId = this.props.userId;
     const eventId = this.state.event._id;
-    console.log(eventId);
     deleteRegistration(userId, eventId)
       .then((register) => {
-        console.log('am I going', this.state.going);
-        console.log('i am the register', register);
         this.changeGoing();
       })
       .catch((error) => console.log('user not registered', error));
@@ -127,7 +115,6 @@ class EventSingleView extends Component {
 
     deleteEvent(eventId)
       .then((event) => {
-        console.log('this was deleted', event);
         this.props.history.push('/');
       })
       .catch((err) => console.log('not deleted'));

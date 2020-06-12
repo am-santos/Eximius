@@ -25,7 +25,6 @@ class EditEventView extends Component {
   loadEvent = () => {
     singleEvent(this.props.match.params.id)
       .then((event) => {
-        console.log('event', event);
         const newDate = event.date[0].split(',');
         const time = newDate[1];
         const date = newDate[0];
@@ -56,8 +55,6 @@ class EditEventView extends Component {
     event.preventDefault();
     const { name, image, city, description, category, capacity } = this.state;
     const date = [this.state.date + ',' + this.state.time];
-
-    console.log(date, 'i am a date');
 
     editEvent(
       { name, image, city, date, description, category, capacity },

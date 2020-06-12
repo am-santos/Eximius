@@ -5,16 +5,9 @@ const baseAuthenticationService = axios.create({
 });
 
 const signUp = (body) => {
-  // const form = new FormData();
-  // form.append('username', body.username);
-  // form.append('email', body.email);
-  // form.append('password', body.password);
-  // console.log('services authentication life')
-  // use form instead of body when dealling with images
   return baseAuthenticationService
     .post(`/sign-up/${body.token}`, body)
     .then((response) => {
-      console.log(response);
       const user = response.data.user;
       return Promise.resolve(user);
     })

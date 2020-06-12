@@ -18,11 +18,8 @@ class ContactUsView extends Component {
     event.preventDefault();
     const { email, message } = this.state;
 
-    console.log('submitted contactus form', email, message);
-
     sendContactMessage({ email, message })
       .then((response) => {
-        console.log('RESPONSE OF SEND sendContactMessage ON HANDLEFORMSUBMISSION', response);
         this.props.history.push('/');
       })
       .catch((err) => console.log(err));
@@ -38,27 +35,27 @@ class ContactUsView extends Component {
     return (
       <>
         <LogoBar updateUser={this.props.updateUser} />
-        <div className="contact-us form">
+        <div className='contact-us form'>
           <h1>
             Tell us why you <br /> want to join us
           </h1>
-          <form className="" onSubmit={this.handleFormSubmission}>
-            <label htmlFor="email-input"></label>
+          <form className='' onSubmit={this.handleFormSubmission}>
+            <label htmlFor='email-input'></label>
             <input
-              type="email"
-              name="email"
-              id="email-input"
-              placeholder="email"
+              type='email'
+              name='email'
+              id='email-input'
+              placeholder='email'
               value={this.state.email}
               onChange={this.handleInputChange}
             />
-            <div className="text-area">
-              <label htmlFor="message-input">Why?</label>
+            <div className='text-area'>
+              <label htmlFor='message-input'>Why?</label>
               <textarea
                 required
-                name="message"
-                id="message-input"
-                placeholder=""
+                name='message'
+                id='message-input'
+                placeholder=''
                 value={this.state.message}
                 onChange={this.handleInputChange}
               />

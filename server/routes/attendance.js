@@ -28,11 +28,13 @@ router.get('/users/:eventId', (req, res, next) => {
 // GET all events for a specific user
 router.get('/events/:userId', (req, res, next) => {
   const userId = req.params.userId;
-  Attendance.find({ userId }).populate('eventId')
+  Attendance.find({ userId })
+    .populate('eventId')
+    .sort({ 'eventId.date': 1 })
     .then((users) => {
       console.log(users);
       res.json({ users });
-    })  
+    })
     .catch((error) => next(error));
 });
 
@@ -60,8 +62,8 @@ router.post('/delete/:userId/:eventId', (req, res, next) => {
 
   Attendance.findOneAndDelete({ userId, eventId })
     .then((registration) => {
-      console.log('Delete registration on server side', registration); 
-      res.json({registration});
+      console.log('Delete registration on server side', registration);
+      res.json({ registration });
     })
     .catch((error) => next(error));
 });

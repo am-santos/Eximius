@@ -47,10 +47,8 @@ export class AnimationTitle extends Component {
     ];
     const title = 'EXIMIUS';
     let randomTitle = '';
-    let tempRandom = '';
     let tempCounter = this.state.counter;
     for (let i = 0; i < title.length; i++) {
-      // tempRandom = title.slice(0 + 1, i + 1);
       randomTitle += letterArr[Math.floor(Math.random() * letterArr.length)];
       tempCounter++;
     }
@@ -71,18 +69,7 @@ export class AnimationTitle extends Component {
   }
 
   render() {
-    return (
-      <h1>
-        {this.state.title}
-        {/* <div className='title'>E</div>
-        <div className='title'>x</div>
-        <div className='title'>i</div>
-        <div className='title'>m</div>
-        <div className='title'>i</div>
-        <div className='title'>u</div>
-        <div className='title'>s</div> */}
-      </h1>
-    );
+    return <h1>{this.state.title}</h1>;
   }
 }
 

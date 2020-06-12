@@ -14,7 +14,6 @@ class LoginView extends Component {
   }
 
   handleInputChange = ({ target: { name, value } }) => {
-    console.log('this was updated');
     this.setState({
       [name]: value
     });
@@ -26,7 +25,6 @@ class LoginView extends Component {
 
     logIn({ username, password })
       .then((user) => {
-        console.log(user);
         this.props.updateUser(user);
         // Redirect user to home page after successful sign up
         this.props.history.push('/');
@@ -38,7 +36,7 @@ class LoginView extends Component {
 
   render() {
     return (
-      <div className="form">
+      <div className='form'>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor='username-input'></label>
           <input

@@ -44,7 +44,6 @@ class CreateEventView extends Component {
 
     createEvent({ name, image, city, date, description, category, userId, capacity })
       .then((event) => {
-        console.log('we are here', event);
         this.props.history.push('/');
       })
       .catch((error) => {

@@ -17,10 +17,8 @@ class MyEventListView extends Component {
   }
 
   loadEvent = () => {
-    console.log(this.props.userId, 'this is the user id');
     listEventsForUser(this.props.userId)
       .then((events) => {
-        console.log(events, 'yours events');
         this.setState({
           events
         });

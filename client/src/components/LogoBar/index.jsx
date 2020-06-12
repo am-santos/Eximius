@@ -32,6 +32,9 @@ const LogoBar = (props) => {
         </>
       )) || (
         <>
+          <Link to='/'>
+            <img id='logo-icon' src='/logo/logo-white.png' alt='' />
+          </Link>
           <Link to='/authentication/log-in'>Log In</Link>
         </>
       )}

@@ -1,7 +1,7 @@
 # Eximius
 
 ## Web APP w/ MERN stack and integration of external APIs
-### Web Development Bootcamp's Project
+#### Web Development Bootcamp's Project
 
 Exclusive event's platform. 
 

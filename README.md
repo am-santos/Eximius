@@ -1,6 +1,6 @@
 # Eximius
 
-## IronHack - 3nd Project - Web APP w/ MERN stack
+## Ironhack - 3nd Project - Web APP w/ MERN stack
 
 
 Exclusive event's platform. 
